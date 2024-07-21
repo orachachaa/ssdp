@@ -1,9 +1,6 @@
-늦게 오신분은 
-github.com/codenuri/ssdp 에서 "DAY1폴더에서 OT.txt" 읽어보세요
-
 강석민 강사 ( smkang @ codenuri.co.kr )
 
-실습환경 : visual studio 2022 
+#1. 실습환경 : visual studio 2022 
 => 노트북에 설치되어 있는지 확인 해보세요
 => "시작누르고", "visual ...." 
 
@@ -12,10 +9,10 @@ github.com/codenuri/ssdp 에서 "DAY1폴더에서 OT.txt" 읽어보세요
 => "visual studio 2022 community" 선택
 => 주의 : 설치시 반드시 "C++ 을 사용한 데스크탑개발" 항목 선택"
 ------------------------------------------
-github.com/codenuri/ssdp 에 접속해 보시면 "DAY1.zip"
+#2. github.com/codenuri/ssdp 에 접속해 보시면 "DAY1.zip"
 있습니다. 받아두세요. 
 
-수업시간
+#3. 수업시간
 오전 : 08:30 ~ 11:25
 점심 : 11:25 ~ 12:35
 오후 : 12:35 ~ 17:20
@@ -26,7 +23,7 @@ github.com/codenuri/ssdp 에 접속해 보시면 "DAY1.zip"
 
 1일차 오후 부터 다양한 디자인패턴 이야기
 
-최종 평가
+#4. 최종 평가
 마지막날(금) 오후 4:00 ~ 5:00
 객관식 + 단답형 필기 시험
 
