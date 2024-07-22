@@ -1,6 +1,6 @@
 ﻿class Animal
 {
-public:
+protected:
 	Animal() {}
 };
 class Dog : public Animal
