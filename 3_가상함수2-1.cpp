@@ -2,8 +2,9 @@
 
 class Base
 {
-protected:
-	~Base() {}
+public:
+	//~Base() {}
+	virtual ~Base() {}
 };
 class Derived : public Base
 {
@@ -13,6 +14,12 @@ public:
 };
 int main()
 {
+	//Derived d;
+	//delete p;
+
+	//Base* p = new Derived;
+	//delete p;
+
 	Base* p = new Derived;
 	delete p;
 }	

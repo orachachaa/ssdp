@@ -11,8 +11,10 @@ public:
 
 	virtual void foo() {}
 
-	virtual void fooo() {}
-	virtual void goo(double){}
+	//virtual void fooo() {}
+	//virtual void goo(double){}
+
+	virtual void fooo() override {}
 };
 
 int main()

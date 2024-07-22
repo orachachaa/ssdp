@@ -8,10 +8,11 @@ public:
 };
 class Rect : public Shape
 {
+	void draw() override {}
 };
 int main()
 {
-	Shape  s; 
-	Shape* p; 
+	Shape  s; // error
+	Shape* p; // ok
 	Rect  r;
 }
