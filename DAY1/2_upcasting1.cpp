@@ -46,6 +46,9 @@ int main()
 	static_cast<Dog*>(p3)->color = 10;
 		// 단, 이경우는 p3가 가리키는 곳이 Dog라는 확신이 있어야 합니다.
 		// Dog 가 아니라면 "undefined", 대부분 잘못된 메모리 접근
+
+	// 핵심 #4. p3가 가리키는 곳이 Dog 인지 조사할수 없나요 ?
+	// => dynamic_cast 사용. 다음예제에서. 
 }
 
 
