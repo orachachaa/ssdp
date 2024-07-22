@@ -38,13 +38,21 @@ template<typename T>
 class MallocAllocator : public IAllocator<T>
 {
 public:
-	// 2번에서 allocate, deallocate 복사해 오세요.
+	T* allocate(int size) override
+	{
+		return static_cast<T*>(malloc(sizeof(T) * size));
+	}
+	void deallocate(T* p, int size) override
+	{
+		free(p);
+	}
 };
 
 
 int main()
 {
-	vector<int> v(4);
+	MallocAllocator<int> ma;
+	vector<int> v(4, &ma );
 }
 
 
