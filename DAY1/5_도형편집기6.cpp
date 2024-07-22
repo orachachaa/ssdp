@@ -28,6 +28,8 @@
 //    중요한 개념입니다. 생각해 보세요
 
 //    "replace conditional with polymorphism"
+//	  "제어문(if, switch) 을 다형성(가상함수)로 변경해라"
+//    도형편집기3.cpp => 도형편집기4.cpp 로 변경해라.
 
 
 
