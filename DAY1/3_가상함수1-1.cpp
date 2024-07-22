@@ -26,6 +26,8 @@ int main()
 
 	Animal* p = &d;
 
-	p->cry1();	// static binding
-	p->cry2();	// dynamic binding
+	p->cry1();	// static binding   "Animal cry1"
+	p->cry2();	// dynamic binding  "Dog cry2"
 }
+
+// 웹브라우져 한개 실행하고, "godbolt.org" 에 접속해 보세요
