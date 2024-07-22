@@ -52,9 +52,27 @@ public:
 	}
 };
 
+// 이제 다양한 정책을 가진 Validator 를 만들면 됩니다.
+// => 주민번호 규칙, 이메일 규칙, 전화번호 규칙등...
+
+class LimitDigitValidator : public IValidator
+{
+	int limit;
+public:
+	LimitDigitValidator(int value = 9999) : limit(9999) {}
+
+	bool validate(const std::string& s, char c) override
+	{
+		return isdigit(c) && ( limit == 9999 || s.size() < limit );
+	}
+};
+
 int main()
 {
 	Edit e;
+	LimitDigitValidator v(5);
+	e.set_validator(&v);
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
