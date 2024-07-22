@@ -65,13 +65,19 @@ public:
 	{
 		return isdigit(c) && ( limit == 9999 || s.size() < limit );
 	}
+
+	bool is_complete(const std::string& s) override
+	{
+		return s.size() == limit;
+	}
 };
 
 int main()
 {
 	Edit e;
+
 	LimitDigitValidator v(5);
-	e.set_validator(&v);
+	e.set_validator(&v);  // edit 는 v 를 사용해서 입력을 validation 합니다.
 
 	while (1)
 	{
