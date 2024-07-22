@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 // 방법 #1. template method 
 // => 변하는 것(메모리 할당/해지 방법) 을 가상함수로 분리
 
