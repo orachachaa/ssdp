@@ -25,7 +25,11 @@ struct IValidator
 class Edit
 {
 	std::string data;
+	
+	IValidator* val = nullptr;
 public:
+	void set_validator(IValidator* v) { val = v; }
+
 	std::string get_data()
 	{
 		data.clear();
@@ -34,9 +38,10 @@ public:
 		{
 			char c = _getch();
 
-			if (c == 13) break; 
+			if (c == 13 && (val == nullptr || val->is_complete(data)) ) break;
 
-			if ( isdigit(c) ) 
+//			if ( isdigit(c) )
+			if ( val == nullptr || val->validate(data, c) ) // Validation 을 다른 클래스에 위임
 			{
 				data.push_back(c);
 				std::cout << c;
