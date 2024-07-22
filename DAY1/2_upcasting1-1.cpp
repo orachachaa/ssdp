@@ -5,6 +5,8 @@ class Animal
 {
 public:
 	int age;
+
+	virtual ~Animal() {}  // 가상 소멸자(다음시간에 설명)
 };
 class Dog : public Animal
 {
@@ -40,6 +42,12 @@ int main()
 	// #2. dynamic_cast : 실행시간 캐스팅
 	//					  실행할때, p가 가리키는 곳이 Dog 인지 조사후 캐스팅
 	//					  Dog 객체가 아닌 경우 0 반환
+
+	// 단, dynamic_cast 를 사용하려면 "반드시 1개 이상의 가상함수" 가 있어야 합니다.
+	// => 타입의 정보를 "가상함수테이블"에 저장하므로
+	// => 가상함수가 있는 타입을 "다형형식(polymorphic type)" 이라고 합니다.
+	// => 현실적으로 상속을 사용하면 거의 대부분 "1개이상의 가상함수"는 있게됩니다.
+	//    (가상 소멸자 때문에)
 	Dog* pdog2 = dynamic_cast<Dog*>(p);
 
 	std::cout << pdog2 << std::endl;
