@@ -8,6 +8,20 @@
 // 1. 가상함수로 분리 - edit2.cpp
 // 2. 다른 클래스로 분리 - edit3.cpp
 
+// Validation 정책을 별도의 클래스로 분리한다.
+// => 교체 가능해야 하므로 
+// => 인터페이스를 먼저 설계
+
+struct IValidator
+{
+	virtual bool validate(const std::string& s, char c) = 0;
+	virtual bool is_complete(const std::string& s) { return true; }
+};
+
+// 주민 등록 번호 : 901    1      [확인버튼]
+
+
+
 class Edit
 {
 	std::string data;
@@ -22,7 +36,7 @@ public:
 
 			if (c == 13) break; 
 
-			if (isdigit(c)) 
+			if ( isdigit(c) ) 
 			{
 				data.push_back(c);
 				std::cout << c;
