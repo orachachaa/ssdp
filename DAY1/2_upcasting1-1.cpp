@@ -1,4 +1,4 @@
-// 2_upcasting1-1.cpp
+ï»¿// 7 page
 #include <iostream>
 
 class Animal
@@ -6,9 +6,14 @@ class Animal
 public:
 	int age;
 
-	virtual ~Animal() {}  // °¡»ó ¼Ò¸êÀÚ(´ÙÀ½½Ã°£¿¡ ¼³¸í)
+	virtual ~Animal() {} // ê°€ìƒ ì†Œë©¸ì(ë‹¤ìŒ ì‹œê°„ì—...)
 };
 class Dog : public Animal
+{
+public:
+	int color;
+};
+class Cat : public Animal
 {
 public:
 	int color;
@@ -17,48 +22,21 @@ public:
 int main()
 {
 	Animal a;
-	Dog    d;
+	Dog d;
 
-	Animal* p = &d;
-//	Animal* p = &a;
+	Animal* p;
+	p = &d;
+	//p = &a;
 
-	// static_cast : ÄÄÆÄÀÏ·¯¿¡°Ô Dog* Ã³·³ »ı°¢ÇØ ´Ş¶ó°í ¿äÃ»ÇÏ´Â °Í
-	//			     ÄÄÆÄÀÏ ½Ã°£¿¡ µ¿ÀÛ, ¿À¹öÇìµå ¾øÀ½.
-	//			     °´Ã¼°¡ Á¤¸» Dog ÀÎÁö, ÄÄÆÄÀÏ·¯´Â Á¶»çÇÒ¼ö ¾øÀ½. 
-	//			     ´Ü, °´Ã¼°¡ Dog °¡ ¾Æ´Ï¶óµµ ¼º°ø. 
-	//				 Dog °´Ã¼°¡ ¾Æ´Ï¶ó¸é °³¹ßÀÚ°¡ Ã¥ÀÓÁ®¾ß ÇÕ´Ï´Ù.
-	Dog* pdog = static_cast<Dog*>(p);
+	Dog* pDog = static_cast<Dog*>(p);
 
-	std::cout << pdog << std::endl; 
+	std::cout << pDog << std::endl;
 
-	if (pdog != nullptr)
-	{
-//		pdog->color = 10;	// ¹ö±×!!!!
-							// pdog °¡ 0 ÀÌ ¾Æ´ÏÁö¸¸ Dog °¡ ¾Æ´Ñ Animal °´Ã¼
-							// Àß¸øµÈ ÄÚµå, °³¹ßÀÚ Ã¥ÀÓ
-							// È®½ÅÀÌ ÀÖÀ»¶§¸¸ static_cast »ç¿ëÇØ¾ß ÇÕ´Ï´Ù
-	}
+	Dog* pDog2 = dynamic_cast<Dog*>(p);
+	std::cout << pDog2 << std::endl;
 
-	// #2. dynamic_cast : ½ÇÇà½Ã°£ Ä³½ºÆÃ
-	//					  ½ÇÇàÇÒ¶§, p°¡ °¡¸®Å°´Â °÷ÀÌ Dog ÀÎÁö Á¶»çÈÄ Ä³½ºÆÃ
-	//					  Dog °´Ã¼°¡ ¾Æ´Ñ °æ¿ì 0 ¹İÈ¯
-
-	// ´Ü, dynamic_cast ¸¦ »ç¿ëÇÏ·Á¸é "¹İµå½Ã 1°³ ÀÌ»óÀÇ °¡»óÇÔ¼ö" °¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.
-	// => Å¸ÀÔÀÇ Á¤º¸¸¦ "°¡»óÇÔ¼öÅ×ÀÌºí"¿¡ ÀúÀåÇÏ¹Ç·Î
-	// => °¡»óÇÔ¼ö°¡ ÀÖ´Â Å¸ÀÔÀ» "´ÙÇüÇü½Ä(polymorphic type)" ÀÌ¶ó°í ÇÕ´Ï´Ù.
-	// => Çö½ÇÀûÀ¸·Î »ó¼ÓÀ» »ç¿ëÇÏ¸é °ÅÀÇ ´ëºÎºĞ "1°³ÀÌ»óÀÇ °¡»óÇÔ¼ö"´Â ÀÖ°ÔµË´Ï´Ù.
-	//    (°¡»ó ¼Ò¸êÀÚ ¶§¹®¿¡)
-	Dog* pdog2 = dynamic_cast<Dog*>(p);
-
-	std::cout << pdog2 << std::endl;
-
-	// dynamic_cast ´Â "½ÇÇà½Ã°£ Á¶»ç" ÀÌ¹Ç·Î ¼º´ÉÀúÇÏ°¡ ÀÖ½À´Ï´Ù.
-	// ÇÁ·Î±×·¥ °³¹ß½Ã p°¡ °¡¸®Å°´Â °÷ÀÌ Dog ¶ó´Â È®½ÅÀÌ ÀÖÀ¸¸é
-	// static_cast ·ÎÇÏ¼¼¿ä
-
-	// È®½ÅÀÌ ¾ø´Ù¸é "dynamic_cast" ·Î Á¶»çÇØµµ µÇÁö¸¸
-	// => dynamic_cast ¸¦ »ç¿ëÇÏ¸é ³ª»Û µğÀÚÀÎ ÀÔ´Ï´Ù.
-	// => µğÀÚÀÎ ÀÚÃ¼¸¦ º¯°æÇØ¾ß ÇÕ´Ï´Ù. ¿ÀÈÄÀÇ ÇÙ½É ³»¿ë
+	Cat* pCat = dynamic_cast<Cat*>(p);
+	std::cout << pCat << std::endl;
 }
 
 
