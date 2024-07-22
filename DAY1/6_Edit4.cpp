@@ -48,3 +48,11 @@ public:
 		//    => strategy 패턴은 별도의 클래스로 분리되므로 private 멤버접근 안됨.
 	}
 };
+
+// 도형편집기 예제
+// => 변하는 것을 "가상함수로(draw_imp)" 가 좋습니다.
+// => template method 로 하라는 것!!
+
+// Edit 예제
+// => 변하는 것을 "다른 클래스로(IValidator인터페이스를 구현하는 클래스)" 가 좋습니다.
+// => 즉, strategy pattern 을 사용하라는 것!

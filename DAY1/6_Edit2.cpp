@@ -59,6 +59,9 @@ int main()
 {
 //	Edit e;
 	NumEdit e;
+
+//	AddressEdit e2;
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;

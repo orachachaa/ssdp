@@ -21,7 +21,7 @@ public:
 
 			if (c == 13) break; // enter 입력
 
-			if (isdigit(c)) // 값의 유효성(숫자) 검사
+			if ( isdigit(c) )  // 값의 유효성(숫자) 검사
 			{
 				data.push_back(c);
 				std::cout << c;

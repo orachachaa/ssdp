@@ -79,6 +79,9 @@ int main()
 	LimitDigitValidator v(5);
 	e.set_validator(&v);  // edit 는 v 를 사용해서 입력을 validation 합니다.
 
+//	LimitDigitValidator v2(15);
+//	e.set_validator(&v2);	// 실행시간 정책 변경
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
