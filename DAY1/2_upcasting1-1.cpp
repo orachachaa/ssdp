@@ -19,8 +19,8 @@ int main()
 	Animal a;
 	Dog    d;
 
-//	Animal* p = &d;
-	Animal* p = &a;
+	Animal* p = &d;
+//	Animal* p = &a;
 
 	// static_cast : 컴파일러에게 Dog* 처럼 생각해 달라고 요청하는 것
 	//			     컴파일 시간에 동작, 오버헤드 없음.
@@ -51,6 +51,14 @@ int main()
 	Dog* pdog2 = dynamic_cast<Dog*>(p);
 
 	std::cout << pdog2 << std::endl;
+
+	// dynamic_cast 는 "실행시간 조사" 이므로 성능저하가 있습니다.
+	// 프로그램 개발시 p가 가리키는 곳이 Dog 라는 확신이 있으면
+	// static_cast 로하세요
+
+	// 확신이 없다면 "dynamic_cast" 로 조사해도 되지만
+	// => dynamic_cast 를 사용하면 나쁜 디자인 입니다.
+	// => 디자인 자체를 변경해야 합니다. 오후의 핵심 내용
 }
 
 
