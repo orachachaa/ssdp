@@ -59,7 +59,7 @@ class LimitDigitValidator : public IValidator
 {
 	int limit;
 public:
-	LimitDigitValidator(int value = 9999) : limit(9999) {}
+	LimitDigitValidator(int value = 9999) : limit(value) {}
 
 	bool validate(const std::string& s, char c) override
 	{
