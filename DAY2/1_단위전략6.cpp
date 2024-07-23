@@ -44,11 +44,26 @@ int main()
 
 	std::cout << "-----------------" << std::endl;
 
-	v.resize(4);
+	v.resize(4);	// 4개 크기 메모리 할당
 
 	std::cout << "-----------------" << std::endl;
 
-	v.resize(8);
+	v.resize(8);	// 1. 8개 할당
+					// 2. 4개 버퍼내용 => 8개 버퍼에 복사
+					// 3. 4개 버퍼 제거
 
 	std::cout << "-----------------" << std::endl;
 }
+
+// strategy vs policy base design
+
+// => 결국, 클래스가 사용하는 어떤 정책을 "별도의 클래스로 분리해서"
+//    교체 할수 있게 하자는 것!!
+
+// strategy			  : interface 를 만들어서 교체 할수 있게
+// policy base design : template 인자로 교체
+
+
+//							성능						유연성
+// strategy				:
+// policy base design	:	
