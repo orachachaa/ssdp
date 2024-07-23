@@ -75,3 +75,13 @@ int main()
 // std::vector<int, debug_alloc<int>> v1;
 // => v1은 debug_alloc 만 사용가능.
 // => 실행할때 다른 할당기로 교체 안됨.
+// => 컨테이너가 실행중에 메모리 할당기를 변경할 이유는 없다!!!
+// => 따라서, 이경우는 strategy 보다는 policy base design 이 좋다.
+
+// design pattern
+// => 대부분의 객체지향 언어로 구현 가능한 일반적인 디자인 기법
+
+// Idioms : 각 언어의 특징을 고려한 디자인 기법
+// (C++ Idioms, Java Idioms 등)
+// 
+// 구글에서 "C++ IDioms" 검색 해 보세요. 1번째 링크
