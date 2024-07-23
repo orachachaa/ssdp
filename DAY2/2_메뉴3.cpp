@@ -56,7 +56,7 @@ public:
 				break;
 
 			if (cmd < 1 || cmd > sz + 1) // 잘못된 입력
-				? ;
+				continue ;
 
 
 			v[cmd - 1]->command(); // 선택된 메뉴 실행
