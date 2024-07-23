@@ -54,4 +54,10 @@ int main()
 
 	Border b(&ps);	// ps 객체에 "Border 그리기" 기능 추가
 	b.draw();
+
+
+//	Border b2(&e);	// 핵심 - 기능을 추가후에 다시 기능 추가
+					// 현재는 에러
+					// 해결은 다음 소스에서
+//	b2.draw(); 
 }
