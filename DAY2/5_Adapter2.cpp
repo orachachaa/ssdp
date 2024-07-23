@@ -59,7 +59,7 @@ public:
 
 	void draw() override
 	{
-		? ;
+		tview->show();
 	}
 };
 
@@ -75,6 +75,8 @@ int main()
 //	v.push_back( &tv ); // ? 이미 생성된 객체 tv 를 v에 넣을수 있을까요 ?
 						// error. Shape 에서 파생되지 않았고
 						//		  draw 도 없다
+
+	v.push_back( new ObjectAdapter( &tv) );
 }
 
 
