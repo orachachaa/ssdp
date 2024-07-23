@@ -61,7 +61,7 @@ int main()
 	FileStream fs("a.txt");
 	fs.write("hello");		
 
-	EncrpytDecorator ed(&fs);
+	EncryptDecorator ed(&fs);
 	ed.write("hello");			
 
 	ZipDecorator  zd(&ed);
