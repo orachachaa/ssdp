@@ -79,9 +79,9 @@ public:
 		}
 
 	}
+
+	BaseMenu* submenu(int idx) { return v[idx]; }
 };
-
-
 
 
 
@@ -95,8 +95,17 @@ int main()
 	root->add(pm2);
 	root->add(new MenuItem("자동설정", 11));
 
+	// submenu 를 생각해 봅시다.
+	auto m = root->submenu(0);
 
 
+	// 아래 코드에 대해서 생각해 봅시다.
+//	root->submenu(0)->add(new MenuItem("Red", 11));
+				// error. add 는 PopupMenu 에 있는데
+				// "root->submenu(0)" 의 결과는 "BaseMenu*"
+				// 캐스팅이 필요 하다.
+
+	static_cast<PopupMenu*>(root->submenu(0))->add(new MenuItem("Red", 11));
 
 	root->command();
 }
