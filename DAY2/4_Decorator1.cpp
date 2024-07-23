@@ -23,6 +23,17 @@ public:
 	}
 };
 
+class Border : public PhotoSticker
+{
+public:
+	void draw()
+	{
+		std::cout << "===============\n";	// 기존 사진에 "Border" 기능추가
+		PhotoSticker::draw();				// 
+		std::cout << "===============\n";
+	}
+};
+
 int main()
 {
 	PhotoSticker ps;
@@ -33,4 +44,19 @@ int main()
 	e.take();	
 	e.draw();	
 
+	Border b;
+	b.take();
+	b.draw();
 }
+
+// 위 코드의 문제점
+
+// 1. 이미 촬영된 사진에 "emoticon" 을 추가한 것이 아니라
+// 2. "emoticon" 을 추가하기 위해 다시 사진을 촬영 한것
+
+// 핵심 : 상속은 "객체" 가 아닌 "클래스" 에 기능을 추가한것!!
+// 우리가 원하는 것은
+// PhotoSticker ps;
+// ps.take();
+
+// 이미 촬영된 ps 객체에 "기능" 을 추가하고 싶은것
