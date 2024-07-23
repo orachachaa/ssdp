@@ -3,6 +3,8 @@
 #include <vector>
 #include <conio.h> 
 
+class UnsupportedOperation {};
+
 class BaseMenu
 {
 	std::string title;
@@ -11,6 +13,8 @@ public:
 	virtual ~BaseMenu() {}
 	std::string get_title() const { return title; }
 	virtual void command() = 0;
+	virtual BaseMenu* submenu(int idx) { throw UnsupportedOperation(); }
+	virtual void add(BaseMenu*) { throw UnsupportedOperation(); }
 };
 
 class MenuItem : public BaseMenu {
@@ -63,6 +67,8 @@ public:
 			v[cmd - 1]->command();
 		}
 	}
+
+	BaseMenu* submenu(int idx) { return v[idx]; }
 };
 
 int main()
@@ -72,18 +78,13 @@ int main()
 	PopupMenu* pm2 = new PopupMenu("해상도변경");
 
 	root->add(pm1);
-	//root->add(pm2);
-	pm1->add(pm2);
+	root->add(pm2);
 	root->add(new MenuItem("자동설정", 11));
 
-	pm1->add(new MenuItem("Red", 21));
-	pm1->add(new MenuItem("Green", 22));
-	pm1->add(new MenuItem("Blue", 23));
-	pm1->add(new MenuItem("White", 24));
+	auto m = root->submenu(0);
+	root->submenu(0)->add(new MenuItem("Red", 11));
 
-	pm2->add(new MenuItem("HD", 31));
-	pm2->add(new MenuItem("FHD", 32));
-	pm2->add(new MenuItem("UHD", 33));
+	//static_cast<PopupMenu*>(root->submenu(0))->add(new MenuItem("Red", 11));
 
 	root->command();
 }

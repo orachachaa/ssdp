@@ -33,9 +33,23 @@ public:
 	void draw() override { std::cout << "draw circle" << std::endl; }
 };
 
+class Text : public TextView, public Shape
+{
+public:
+	Text(const std::string& s) : TextView(s) {}
+
+	void draw() override
+	{
+		TextView::show();
+	}
+};
+
 int main()
 {
 	std::vector<Shape*> v;
+
+	v.push_back(new Text("hello"));
+	v[0]->draw();
 }
 
 

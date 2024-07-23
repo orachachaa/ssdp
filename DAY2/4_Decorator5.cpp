@@ -1,7 +1,13 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
-class FileStream
+struct Stream
+{
+	virtual void write(const std::string&) = 0;
+	virtual ~Stream() {}
+};
+
+class FileStream : public Stream
 {
 	FILE* file;
 public:
@@ -19,5 +25,12 @@ public:
 
 int main()
 {
-	
+	FileStream fs("a.txt");
+	fs.write("hello");
+
+	//NetworkStream ns("100.100.100.100", 3000);
+	//ns.write("hello");
+
+	//PipeStream ps("mynamepipe");
+	//ps.write("hello");
 }

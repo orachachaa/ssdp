@@ -9,15 +9,40 @@
 // 3. File 은   이름과 크기가 있습니다. ( std::string name, int size)
 // 4. File, Folder 모두 크기를 구할수 있습니다. ( get_size() )
 
+class Unsupported {};
 
-class File  
+class Component
 {
+	std::string name;
 public:
+	Component(const std::string& name) : name(name) {}
+	virtual ~Component() {}
+	virtual int get_size() = 0;
+	virtual void add (Component *p) { }
 };
 
-class Folder 
+class File : public Component
 {
+	int size;
 public:
+	File(const std::string& name, int size) : Component(name), size(size) {}
+	int get_size() override { return size; }
+};
+
+class Folder : public Component
+{
+	std::vector<Component*> v;
+public:
+	Folder(const std::string& name) : Component(name) {}
+	void add(Component* c) { v.push_back(c); }
+	int get_size() override
+	{
+		int s = 0;
+		for (auto c : v)
+			s += c->get_size();
+
+		return s;
+	}
 };
 
 int main()
