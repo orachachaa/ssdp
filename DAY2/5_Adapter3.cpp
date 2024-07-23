@@ -21,4 +21,7 @@ int main()
 {
 	stack<int> s;
 	s.push(10);
+
+	// 위 코드의 문제점
+	s.push_front(30); //!!!! 한방향이 아닌 양쪽으로 접근!!
 }
