@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std::placeholders; // _1, _2, _3 ... À» À§ÇØ
 
-void foo(int a, int b int c, int d)
+void foo(int a, int b, int c, int d)
 {
 	printf("%d, %d, %d, %d\n", a, b, c, d);
 }
