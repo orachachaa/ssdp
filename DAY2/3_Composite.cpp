@@ -10,24 +10,24 @@
 // 4. File, Folder 모두 크기를 구할수 있습니다. ( get_size() )
 
 
-class component
+class Component
 {
 	std::string name;
 public:
-	component(const std::string& name) : name(name) {}
+	Component(const std::string& name) : name(name) {}
 
-	virtual ~component() {}
+	virtual ~Component() {}
 
 	virtual int get_size() = 0;
 };
 
 // File 과 Folder 완성해 보세요.
-class File  
+class File  : public Component
 {
 public:
 };
 
-class Folder 
+class Folder : public Component
 {
 public:
 };
