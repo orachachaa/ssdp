@@ -64,6 +64,14 @@ int main()
 // policy base design : template 인자로 교체
 
 
-//							성능						유연성
-// strategy				:
-// policy base design	:	
+//						  성능						유연성
+// strategy				: 가상함수기반. 느리다.		실행시간 교체 가능
+// policy base design	: 인라인 치환가능. 빠르다		실행시간 교체 안됨
+
+// Edit e;
+// e.set_validate(&v1); // v1 정책을 사용하다가
+// e.set_validate(&v2); // v2 정책으로 교체, 즉, 다른 정책으로 교체 가능
+
+// std::vector<int, debug_alloc<int>> v1;
+// => v1은 debug_alloc 만 사용가능.
+// => 실행할때 다른 할당기로 교체 안됨.
