@@ -13,8 +13,8 @@ class stack : public std::list<T>
 {
 public:
 	void push(const T& e) { std::list<T>::push_back(e); }
-	void pop()            { std::list<T>::pop_back(e); }
-	T&   top()            { return std::list<T>::back(e);}
+	void pop()            { std::list<T>::pop_back(); }
+	T&   top()            { return std::list<T>::back();}
 };
 
 int main()
