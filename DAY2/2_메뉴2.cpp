@@ -7,6 +7,25 @@
 // => 프로그램의 모든 요소를 객체로 생각하는 것
 // => 프로그램에서 필요한 타입을 먼저 설계해야 한다.
 
+class MenuItem
+{
+	std::string title;
+	int id;
+public:
+	MenuItem(const std::string& title, int id)
+		: title(title), id(id) {}
+
+	std::string get_title() const { return title; }
+
+	void command()
+	{
+		std::cout << get_title() << " 메뉴 선택됨\n";
+
+		_getch(); // 아무키나 누를때 까지 잠시 대기
+	}
+};
+
+
 int main()
 {
 	MenuItem m1("김밥", 11);
