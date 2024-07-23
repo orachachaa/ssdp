@@ -33,12 +33,26 @@ public:
 	int get_size() override { return size; }
 };
 
-
-
 class Folder : public Component
 {
+	std::vector<Component*> v; // <== 핵심
 public:
+	Folder(const std::string& name) : Component(name) {}
+
+	void add(Component* c) { v.push_back(c); }
+
+	int get_size() override
+	{
+		int s = 0;
+
+		for (auto c : v)
+			s += c->get_size();
+
+		return s;
+	}
 };
+
+
 
 int main()
 {
