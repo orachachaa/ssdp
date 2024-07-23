@@ -2,6 +2,7 @@
 // => 메뉴 예제 완성을 위한 사전 지식 설명
 #include <functional>
 #include <iostream>
+using namespace std::placeholders; // _1, _2, _3 ... 을 위해
 
 void foo(int a, int b int c, int d)
 {
@@ -16,7 +17,14 @@ int main()
 	
 	// 사용법     : std::bind(M항함수주소, M개인자)
 
-	auto f1 = std::bind(&foo, 1, 2, 3, 4);
+	auto f1 = std::bind(&foo, 1, 2, 3, 4); // 4항 => 0항 함수로 변경
 	f1();
 
+	auto f2 = std::bind(&foo, 10, _1, 3, _2); // 4항 => 2항
+	f2(5, 9); // foo(10, 5, 3, 9)
+
+
+	auto f3 = std::bind(&foo, ? , ? , ? , ? ); 
+
+	f3(9, 4, 7); // foo(3, 7, 9, 4) 가 되도록 위 ? 채우세요
 }
