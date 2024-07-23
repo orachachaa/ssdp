@@ -46,16 +46,31 @@ public:
 // TextView 를 도형편집기 시스템에서 사용할수 있도록
 // => 인터페이스(함수이름)을 변경해 봅시다.
 
-class Text : public TextView
+class Text : public TextView, public Shape
 {
 public:
+	Text(const std::string& s) : TextView(s) {}
 
+	// "show" 라는 함수를 "draw" 라는 이름으로 변경해서
+	// "인터페이스의 불일치" 를 해결하는 코드 입니다.
+	void draw() override
+	{
+		TextView::show();
+	}
 };
 
+// 어답터 패턴
+// => 이미 존재 하는 클래스의 인터페이스(함수이름)을
+//    Client 가 요구하는 형태로 변경해 주는 패턴
+// => 인터페이스의 불일치를 해결하는 패턴
 
 int main()
 {
 	std::vector<Shape*> v;
+
+	v.push_back(new Text("hello"));
+
+	v[0]->draw();
 }
 
 
