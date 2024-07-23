@@ -35,7 +35,7 @@ public:
 };
 
 // 어답터 패턴의 종류
-// class 어답터 : 클래스의 인터페이스를 변경
+// class 어답터  : 클래스의 인터페이스를 변경
 // object 어답터 : 객체의 인터페이스 변경
 
 
@@ -50,14 +50,31 @@ public:
 	}
 };
 
+class ObjectAdapter : public Shape
+{
+	TextView* tview; // 핵심 : 이미 생성된 객체를 가리키기 위한 포인터
+
+public:
+	ObjectAdapter(TextView* t) : tview(t) {}
+
+	void draw() override
+	{
+		? ;
+	}
+};
+
+
 
 int main()
 {
 	std::vector<Shape*> v;
 
-	v.push_back(new Text("hello"));
+	TextView tv("hello"); // TextView : 클래스
+						  // tv       : 객체
 
-	v[0]->draw();
+//	v.push_back( &tv ); // ? 이미 생성된 객체 tv 를 v에 넣을수 있을까요 ?
+						// error. Shape 에서 파생되지 않았고
+						//		  draw 도 없다
 }
 
 
