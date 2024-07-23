@@ -74,17 +74,20 @@ int main()
 	MenuItem m2("소고기 김밥", 12);
 	MenuItem m3("돈까스 김밥", 13);
 
-	MenuItem m5("라면", 51);
-
 	PopupMenu kimbab("김밥류");
 	kimbab.add(&m1);
 	kimbab.add(&m2);
 	kimbab.add(&m3);
 
+	MenuItem m5("라면", 51);
+
 	PopupMenu pm("오늘의 점심메뉴");
 
-	pm.add(&kimbab); // 핵심 ???!!!
-	pm.add(&m5);
+	pm.add(&kimbab); // 핵심 ???!!! kimbab 은 MenuItem 이 아닌 PopupMenu
+					 // 현재 코드는 에러
+					 // 해결은 다음소스에서!!
+
+	pm.add(&m5);	 // ok.. m5 는 MenuItem
 
 	pm.command(); 
 }
