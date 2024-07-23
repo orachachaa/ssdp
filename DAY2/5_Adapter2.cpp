@@ -63,6 +63,13 @@ public:
 	}
 };
 
+// Text : 클래스 어답터. 
+//        사용시, Text 타입의 객체를 생성해서 사용!!!
+
+// ObjectAdapter : 객체 어답터
+//		           이미 생성되어 있는 TextView 타입의 객체를
+//				   도형편집기 시스템에 넣을수 있도록!!
+
 
 
 int main()
@@ -76,7 +83,9 @@ int main()
 						// error. Shape 에서 파생되지 않았고
 						//		  draw 도 없다
 
-	v.push_back( new ObjectAdapter( &tv) );
+	v.push_back( new ObjectAdapter( &tv ) );
+
+	v[0]->draw(); // draw 요청을 ObjectAdapter 가 tv.show() 로 변경.
 }
 
 
