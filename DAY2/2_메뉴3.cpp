@@ -35,23 +35,34 @@ public:
 	// 핵심 : popup 메뉴를 "선택" 할때 동작
 	void command()
 	{
-		int sz = v.size();
-
-		for (int i = 0; i < sz; i++)
+		while (1)
 		{
-			std::cout << i + 1 << ". " << v[i]->get_title() << std::endl;
+			system("cls"); // 화면 지우기
+
+			int sz = v.size();
+
+			for (int i = 0; i < sz; i++)
+			{
+				std::cout << i + 1 << ". " << v[i]->get_title() << std::endl;
+			}
+			std::cout << sz + 1 << ". 종료\n";
+
+			std::cout << "메뉴를 선택하세요 >> ";
+
+			int cmd;
+			std::cin >> cmd;
+
+			if (cmd == sz + 1) // 종료 선택
+				break;
+
+			if (cmd < 1 || cmd > sz + 1) // 잘못된 입력
+				? ;
+
+
+			v[cmd - 1]->command(); // 선택된 메뉴 실행
 		}
 
-		std::cout << sz + 1 << ". 종료\n";
-		
-		std::cout << "메뉴를 선택하세요 >> ";
-
-		int cmd;
-		std::cin >> cmd;
-
-		v[cmd - 1]->command(); // 선택된 메뉴 실행
 	}
-
 };
 
 
