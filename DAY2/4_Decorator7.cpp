@@ -24,11 +24,12 @@ public:
 		printf("%s 쓰기\n", s.c_str());
 	}
 };
-// FileStream, NetworkStream, PipeStream 등에 기능을 추가하는
-// Decorator 들..
+// FileStream, NetworkStream, PipeStream 등에 기능을 추가하는Decorator 들..
+
 class ZipDecorator : public Stream
 {
-	Stream* stream;
+	Stream* stream;	// 핵심 : 이미 생성된 실제 Stream 객체를 가리키는 포인터
+					//       FileStream 또는 N/W, Pipe 등.
 public:
 	ZipDecorator(Stream* s) : stream(s) {}
 
@@ -39,6 +40,21 @@ public:
 		stream->write(data);
 	}
 };
+
+class EncryptDecorator : public Stream
+{
+	Stream* stream;	
+public:
+	EncryptDecorator(Stream* s) : stream(s) {}
+
+	void write(const std::string& s) override
+	{
+		auto data = "[ " + s + " 암호화됨 ]";
+
+		stream->write(data);
+	}
+};
+
 
 int main()
 {
