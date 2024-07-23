@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <conio.h> 
+#include <functional> // std::bind, std::function
+using namespace std::placeholders;
 
 
 
@@ -22,22 +24,7 @@ public:
 
 
 
-class MenuItem : public BaseMenu
-{
-	int id;
-public:
-	MenuItem(const std::string& title, int id)
-		: BaseMenu(title), id(id) {}
 
-
-
-	void command()
-	{
-		std::cout << get_title() << " ¸Þ´º ¼±ÅÃµÊ\n";
-
-		_getch();
-	}
-};
 
 
 class PopupMenu : public BaseMenu
@@ -82,8 +69,35 @@ public:
 };
 
 
+class MenuItem : public BaseMenu
+{
+	int id;
+
+	using HANDLER = std::function<void()>;
+
+	std::vector<HANDLER> handler_vector;
+
+public:
+	MenuItem(const std::string& title, int id, HANDLER h = nullptr)
+		: BaseMenu(title), id(id) 
+	{
+		if (h != nullptr)
+			handler_vector.push_back(h);
+	}
+
+	void add_handler(HANDLER h) { handler_vector.push_back(h);	}
 
 
+	void command()
+	{
+		for (auto f : handler_vector)
+			f();
+	}
+};
+//-------------------------------------
+void f0()       { std::cout << "f0\n"               ; _getch(); }
+void f1(int id) { std::cout << "f1 : " << id << "\n"; _getch(); }
+void f2(int a, int b) {std::cout << "f2\n"; _getch();}
 
 int main()
 {
@@ -94,11 +108,11 @@ int main()
 	root->add(pm1);
 	root->add(pm2);
 
-	pm1->add(new MenuItem("Red", 21));
-	pm1->add(new MenuItem("Green", 22));
+	pm1->add(new MenuItem("Red",   21, &f0));
+	pm1->add(new MenuItem("Green", 22, []() { std::cout << "lambda\n"; }));
 
-	pm2->add(new MenuItem("HD", 31));
-	pm2->add(new MenuItem("FHD", 32));
+	pm2->add(new MenuItem("HD",  31, std::bind(&f1, 31)));
+	pm2->add(new MenuItem("FHD", 32, std::bind(&f1, 32))));
 
 	root->command();
 }
