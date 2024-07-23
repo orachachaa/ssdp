@@ -43,12 +43,14 @@ int main()
 	// 방법 #3. Decorator 패턴을 사용하면 어떨까 ?
 
 	FileStream fs("a.txt");
-	fs.write("hello");
+	fs.write("hello");			// 파일에 직접 쓰기
 
 	EncrpytDecorator ed(&fs);
-	ed.write("hello");
+	ed.write("hello");			// 1. "hello" 을 암호화 한후 <= 추가된 기능
+								// 2. fs.write(암호화된 데이타)
 
 	ZipDecorator  zd(&ed);
-	zd.write("hello");
+	zd.write("hello");			// 1. "hello" 를 압축하고
+								// 2. ed.write(압축된 데이타)
 
 }
