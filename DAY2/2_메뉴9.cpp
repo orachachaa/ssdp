@@ -112,7 +112,7 @@ int main()
 	pm1->add(new MenuItem("Green", 22, []() { std::cout << "lambda\n"; }));
 
 	pm2->add(new MenuItem("HD",  31, std::bind(&f1, 31)));
-	pm2->add(new MenuItem("FHD", 32, std::bind(&f1, 32))));
+	pm2->add(new MenuItem("FHD", 32, std::bind(&f1, 32)));
 
 	root->command();
 }
