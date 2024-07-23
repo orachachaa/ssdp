@@ -52,7 +52,11 @@ public:
 
 int main()
 {
-	DNS dns("www.samsung.com");
+//	DNS dns("www.naver.com"); // 항상 서버에서 정보 얻기
+//	DNSProxy dns("www.naver.com");	// 1. cache 에서 찾고!!
+									// 2. 없으면 서버 접속(DNS 클래스 사용)
+
+	DNSProxy dns("www.samsung.com");
 
 	std::cout << dns.get_ip() << std::endl;
 }
