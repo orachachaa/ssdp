@@ -24,8 +24,16 @@ public:
 // File 과 Folder 완성해 보세요.
 class File  : public Component
 {
+	int size;
 public:
+	File(const std::string& name, int size)
+		: Component(name), size(size) {}
+
+	// File은 자신의 크기를 반환
+	int get_size() override { return size; }
 };
+
+
 
 class Folder : public Component
 {
