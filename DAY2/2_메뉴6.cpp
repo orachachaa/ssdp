@@ -87,6 +87,9 @@ public:
 
 int main()
 {
+	// 아래 코드를 보고, 각 메뉴 객체의 포함관계를 생각해 보세요
+	// => "TREE" 자료구조의 모양을 가지게 됩니다.
+	// => 객체의 포함 관계가 tree 구조로 만들어 지게 됩니다.
 	PopupMenu* root = new PopupMenu("ROOT");
 	PopupMenu* pm1  = new PopupMenu("색상변경");
 	PopupMenu* pm2  = new PopupMenu("해상도변경");
@@ -104,7 +107,7 @@ int main()
 	pm2->add(new MenuItem("UHD", 33));
 
 	// 이제 시작하려면 ?
-
+	root->command();
 }
 
 
