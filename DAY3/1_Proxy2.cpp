@@ -60,3 +60,12 @@ int main()
 
 	std::cout << dns.get_ip() << std::endl;
 }
+
+// proxy 패턴 : 대행자를 만드는 패턴
+
+// virtual proxy : 비용이 많이 드는 객체의 생성을 최대한 늦게 하도록 하는 패턴
+//				   위 코드의 DNSProxy
+
+// remote proxy : 원격지 객체에 대한 local 표현( 다음예제)
+
+// 77 page
