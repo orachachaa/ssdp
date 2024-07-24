@@ -12,14 +12,24 @@
 
 ICalc* load_proxy()
 {
+	void* addr = ec_load_module("CalcProxy.dll");
+				// windows : LoadLibrary()
+				// linux   : dlopen()
 
+	using F = ICalc* (*)(); // 함수 포인터 타입
+
+	F f = (F)ec_get_function_address(addr, "create");
+				// windows : GetProcAddress()
+				// linux   : dlsym()
+
+	ICalc* calc = f();
+
+	return calc;
 }
-
-
 
 int main()
 {
-	ICalc* calc = create();
+	ICalc* calc = load_proxy();
 
 
 	int n1 = calc->Add(1, 2);
