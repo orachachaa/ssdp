@@ -33,16 +33,13 @@ public:
 		if (it != image_map.end())
 		{
 			img = it->second;   // map 은 pair 보관
-								// first 는 키값, second 는 value
+								// first 는 키값(url), second 는 value(Image*)
 		}
 		else
 		{
 			img = new Image(url);
 			image_map[url] = img;
 		}
-
-
-
 		return img;
 	}
 };
