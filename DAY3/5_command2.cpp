@@ -7,7 +7,7 @@ class BrightCommand
 	Monitor& m;
 	int value;
 public:
-	BrightCommand(Monitor& m, int value) : m(m), value(m) {}
+	BrightCommand(Monitor& m, int value) : m(m), value(value) {}
 
 	void execute() { m.set_brightness(value); }
 };
