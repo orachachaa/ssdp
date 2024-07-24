@@ -11,18 +11,26 @@ class sp
 {
 	T* obj;
 public:
-	sp(T* p = nullptr) : obj(p) {}
-	sp(const sp& other) : obj(other.obj) {}
+	sp(T* p = nullptr) : obj(p) { if (obj != nullptr) obj->AddRef(); }
+	sp(const sp& other) : obj(other.obj) { if (obj != nullptr) obj->AddRef(); }
 
-	~sp() {}
+	~sp() 
+	{
+		if (obj != nullptr)
+			obj->Release();
+	}
 };
 
 int main()
 {
+	// calc1, calc2는 포인터가 아닌 객체입니다
 	sp<ICalc> calc1 = load_proxy();
 	sp<ICalc> calc2 = calc1;
 }
 
+
+
+/*
 int main()
 {
 	ICalc* calc1 = load_proxy();
@@ -34,7 +42,7 @@ int main()
 	calc2->Release();
 	calc1->Release();	
 }
-
+*/
 
 
 
