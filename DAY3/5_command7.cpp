@@ -86,11 +86,19 @@ public:
 };
 
 
-
-
 int main()
 {
 	std::vector<Shape*> v;
+
+	MacroCommand* mc1 = new MacroCommand;
+	mc1->add(new AddCommand<Rect>(v));
+	mc1->add(new AddCommand<Circle>(v));
+	mc1->add(new DrawCommand(v));
+	mc1->execute();
+
+
+
+
 
 	std::stack<ICommand*> cmd_stack;
 
