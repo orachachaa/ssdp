@@ -2,6 +2,9 @@
 #include <mutex>
 
 // RAII Idioms 
+// => "Resource Acquision Is Initailization"
+// => "자원을 획득하는 것은 (자원관리객체가) 초기화 될때 이다." 라는 의미
+
 
 // 자원의 할당/해지는 반드시 "생성자/소멸자"에 의존해야 합니다.
 template<typename T>
