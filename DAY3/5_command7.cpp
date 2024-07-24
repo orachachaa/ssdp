@@ -72,7 +72,7 @@ public:
 
 
 // 여러개 명령을 보관했다가 한번에 실행하는 명령
-class MacroCommand
+class MacroCommand : public ICommand  // Composite 패턴
 {
 	std::vector<ICommand*> v;
 public:
@@ -96,7 +96,11 @@ int main()
 	mc1->add(new DrawCommand(v));
 	mc1->execute();
 
+	MacroCommand* mc2 = new MacroCommand;
+	mc2->add(new AddCommand<Rect>(v));
 
+	mc2->add( mc1 ); // ??
+	mc2->execute();
 
 
 
