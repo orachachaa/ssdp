@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <map>
+#include "helper.h"  // MAKE_SINGLETON() 매크로
 
 class Image
 {
@@ -28,6 +29,8 @@ public:
 
 class ImageFactory
 {
+	MAKE_SINGLETON(ImageFactory)
+
 	std::map<std::string, Image*> image_map;
 public:
 	Image* Create(const std::string& url)
@@ -52,7 +55,7 @@ public:
 
 int main()
 {
-	ImageFactory factory;
+	ImageFactory& factory = ImageFactory::get_instance();
 
 
 	Image* img1 = factory.Create("www.naver.com/a.png");
