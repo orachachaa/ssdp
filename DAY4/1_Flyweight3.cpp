@@ -64,6 +64,7 @@ int main()
 	Image* img2 = factory.Create("www.naver.com/a.png");
 	img2->Draw();
 
+//	factory.Clean();
 }
 
 
