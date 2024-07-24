@@ -50,8 +50,6 @@ public:
 		v.pop_back();
 		delete s;
 	}
-
-	virtual Shape* create_shape() = 0;
 };
 
 
