@@ -46,12 +46,16 @@ public:
 
 int main()
 {
+	
 	Image* img1 = Image::Create("www.naver.com/a.png");
 	img1->Draw();
 
 	Image* img2 = Image::Create("www.naver.com/a.png");
 	img2->Draw();
 
+	// IOS 개발에 사용되는 cocoa touch 라이브러리의 
+	// UIImage 클래스가 위 처럼 static 멤버 함수를 통해서 
+	// 객체를 생성하고 있습니다.
 }
 
 
