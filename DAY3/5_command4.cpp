@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 
 class Shape
 {
@@ -48,31 +49,72 @@ public:
 	}
 };
 
+class AddCircleCommand : public ICommand
+{
+	std::vector<Shape*>& v;
+public:
+	AddCircleCommand(std::vector<Shape*>& v) : v(v) {}
 
+	void execute() override { v.push_back(new Circle); }
 
+	bool can_undo() override { return true; }
 
+	void undo() override
+	{
+		Shape* s = v.back();
+		v.pop_back();
+		delete s;
+	}
+};
+
+class DrawCommand : public ICommand
+{
+	std::vector<Shape*>& v;
+public:
+	DrawCommand(std::vector<Shape*>& v) : v(v) {}
+
+	void execute() override 
+	{ 
+		for (auto s : v) s->draw();
+	}
+
+	bool can_undo() override { return true; }
+
+	void undo() override 	{	system("cls");	}
+};
 
 
 int main()
 {
 	std::vector<Shape*> v;
 
+	std::stack<ICommand*> cmd_stack;
+
+	ICommand* command = nullptr;
+
+
 	while (1)
 	{
 		int cmd;
 		std::cin >> cmd;
 
-		// 생각해볼 문제 #1. undo/redo 기능을 구현하려면 어떻게 해야 할까요 ?
-		// => "command 패턴" 을 사용하면 됩니다.
-
-		if (cmd == 1) v.push_back(new Rect);
-		else if (cmd == 2) v.push_back(new Circle);
+		if (cmd == 1)
+		{
+			command = new AddRectCommand(v);
+			command->execute();
+			cmd_stack(command);
+		}
+		else if (cmd == 2) 
+		{
+			command = new AddCircleCommand(v);
+			command->execute();
+			cmd_stack(command);
+		}
 		else if (cmd == 9)
 		{
-			for (auto s : v)
-			{
-				s->draw();
-			}
+			command = new DrawCommand(v);
+			command->execute();
+			cmd_stack(command);
 		}
 	}
 }
