@@ -21,9 +21,29 @@ public:
 	void Draw() { std::cout << "Draw " << image_url << std::endl; }
 
 
+	inline static std::map<std::string, Image*> image_map;
+
 	static Image* Create(const std::string& url)
 	{
-		Image* img = new Image(url);
+		Image* img = nullptr;
+
+		// 자료구조(map) 에서 "url" 키값이 있는지 검색
+		auto it = image_map.find(url);
+
+		if (it != image_map.end())
+		{
+			img = it->second;   // map 은 pair 보관
+								// first 는 키값, second 는 value
+		}
+		else
+		{
+			img = new Image(url);
+			image_map[url] = img;
+		}
+
+
+
+		return img;
 	}
 };
 
