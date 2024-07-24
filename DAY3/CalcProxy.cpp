@@ -27,6 +27,8 @@ ICalc* create()
 // => 나타나는 창에서 cl 이라고 입력해 보세요
 
 // 현재 소스가 있는 곳으로 이동해서 아래 처럼 빌드하면 DLL 생성됩니다.
+// cd \ 
+// cd 폴더명
 
 // cl CalcProxy.cpp   /LD   /link user32.lib  gdi32.lib  kernel32.lib
 
