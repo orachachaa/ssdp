@@ -12,11 +12,14 @@
 
 ICalc* load_proxy()
 {
+	// 새로운 Proxy 가 배포 될때 "DLL 이름" 은 계속 유지 해야 합니다.
+	// => "CalcProxy.dll" 이라는 동일한 이름으로 배포, 
 	void* addr = ec_load_module("CalcProxy.dll");
 				// windows : LoadLibrary()
 				// linux   : dlopen()
 
 	using F = ICalc* (*)(); // 함수 포인터 타입
+							// typedef ICalc*(*F)()
 
 	F f = (F)ec_get_function_address(addr, "create");
 				// windows : GetProcAddress()
