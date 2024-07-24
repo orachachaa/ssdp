@@ -12,8 +12,7 @@ private:
 	Cursor(const Cursor& c) = delete;
 	Cursor& operator=(const Cursor&) = delete;
 
-//	Cursor instance;
-	static Cursor instance;
+	inline static Cursor instance;
 public:
 	static Cursor& get_instance()
 	{
@@ -21,7 +20,6 @@ public:
 		return instance;
 	}
 };
-//Cursor Cursor::instance;
 
 int main()
 {

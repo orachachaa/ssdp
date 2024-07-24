@@ -102,12 +102,54 @@
     <ClCompile Include="1_Proxy2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="CalcProxy.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2_RemoteProxy8.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="2_RemoteProxy9.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1_Proxy3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_Bridge4.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_command6.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5_command7.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_싱글톤2-1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_싱글톤7.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="6_싱글톤8.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRTP1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRTP2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRTP3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cppmaster.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
     <ClInclude Include="monitor.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cppmaster.h">
+    <ClInclude Include="ICalc.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>

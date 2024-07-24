@@ -1,7 +1,7 @@
 ﻿class PointImpl
 {
 	int x, y;
-	int debug
+	int debug;
 public:
 	void print();
 };

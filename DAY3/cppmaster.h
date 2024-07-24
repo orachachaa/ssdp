@@ -55,6 +55,7 @@ Log debug;
 #   include <typeinfo>
 #	define LOG_TYPE_NAME(...)	debug.print( typeid(__VA_ARGS__).name() )
 #endif
+#include <WinUser.h>
 
 // + + + + + + + + + + + + + + + + + + + + +
 // LOG_FUNCTION_NAME() macro

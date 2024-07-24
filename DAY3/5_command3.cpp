@@ -1,53 +1,38 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include "monitor.h"
 
-class Shape
+struct ICommand
 {
-public:
-	virtual void draw() = 0;
-	virtual ~Shape() {}
+	virtual void execute() = 0;
+	virtual void undo() {};
+	virtual ~ICommand() {}
 };
 
-class Rect : public Shape
+class BrightCommand : public ICommand
 {
+	Monitor& m;
+	int value;
+	int old_value = 0;
 public:
-	void draw() override { std::cout << "draw rect" << std::endl; }
-};
+	BrightCommand(Monitor& m, int value) : m(m), value(value) {}
 
-class Circle : public Shape
-{
-public:
-	void draw() override { std::cout << "draw circle" << std::endl; }
+	void execute() {
+		old_value = value;
+		m.set_brightness(value);
+	}
+
+	void undo() { m.set_brightness(old_value); }
 };
 
 int main()
 {
-	std::vector<Shape*> v;
+	Monitor m;
 
-	while (1)
-	{
-		int cmd;
-		std::cin >> cmd;
+	int old_value = m.get_brightness();
+	m.set_brightness(90);
 
-		// 생각해볼 문제 #1. undo/redo 기능을 구현하려면 어떻게 해야 할까요 ?
-		// => "command 패턴" 을 사용하면 됩니다.
+	m.set_brightness(old_value);
 
-		if (cmd == 1) v.push_back(new Rect);
-		else if (cmd == 2) v.push_back(new Circle);
-		else if (cmd == 9)
-		{
-			for (auto s : v)
-			{
-				s->draw(); 
-			}
-		}
-	}
+	BrightCommand cmd(m, 90);
+	cmd.execute();
+	cmd.undo();
 }
-
-
-
-
-
-
-

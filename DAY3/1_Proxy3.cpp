@@ -46,11 +46,6 @@ public:
 
 int main()
 {
-	//DNS dns("www.naver.com");
-	//DNSProxy dns("www.naver.com");
 
-	DNSProxy dns("www.samsung.com");
-
-	std::cout << dns.get_ip() << std::endl;
 }
 

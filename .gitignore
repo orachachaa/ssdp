@@ -1,0 +1,12 @@
+﻿################################################################################
+# 이 .gitignore 파일은 Microsoft(R) Visual Studio에서 자동으로 만들어졌습니다.
+################################################################################
+
+/.vs
+/DAY3/.vs/DAY3
+/DAY3/DAY3/Debug
+/DAY3/DAY3/x64/Debug
+/DAY3/Debug
+/Server/.vs/Server
+/Server/Debug
+/Server/Server/Debug
