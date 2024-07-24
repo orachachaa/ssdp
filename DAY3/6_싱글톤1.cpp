@@ -43,7 +43,13 @@ int main()
 
 
 
+// 위 코드는 "effective-c++" 의 저자인
+// => "scott mayer" 가 처음 제안한 코드 입니다.
+// => "mayer's singleton" 이라고 합니다
 
+// => C++ 싱글톤 구현중 가장 좋은 방법으로 알려진 코드
+// 
+// 특징 : 유일한 객체가 static 지역변수
 
 
 
