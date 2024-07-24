@@ -17,8 +17,15 @@
 // main <=====================================> m.set_brightness()
 // main <============ BrightCommand ==========> m.set_brightness()
 
+struct ICommand
+{
+	virtual void execute() = 0;
+	virtual void undo() {};
+	virtual ~ICommand() {}
+};
 
-class BrightCommand
+
+class BrightCommand : public ICommand
 {
 	Monitor& m;
 	int value;
