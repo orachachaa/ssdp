@@ -7,6 +7,7 @@
 
 // Window 클래스 안에서 T 를 사용하지 않은 모든 멤버 함수는
 // => template 이 아닌 기반 클래스를 만들어서 제공해야 합니다.
+// => 이런 기술을 "template hoisting 또는 thin template 이라고 합니다."
 
 class WindowBase
 {
@@ -19,7 +20,6 @@ public:
 	void on_click() { std::cout << "window on_click\n"; }
 };
 
-
 template<typename T>
 class Window : public WindowBase
 {
@@ -28,9 +28,7 @@ public:
 	{
 		static_cast<T*>(this)->on_click();
 	}
-
 };
-
 
 class MainWindow : public Window< MainWindow >
 {
