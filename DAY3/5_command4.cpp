@@ -102,19 +102,19 @@ int main()
 		{
 			command = new AddRectCommand(v);
 			command->execute();
-			cmd_stack(command);
+			cmd_stack.push(command);
 		}
 		else if (cmd == 2) 
 		{
 			command = new AddCircleCommand(v);
 			command->execute();
-			cmd_stack(command);
+			cmd_stack.push(command);
 		}
 		else if (cmd == 9)
 		{
 			command = new DrawCommand(v);
 			command->execute();
-			cmd_stack(command);
+			cmd_stack.push(command);
 		}
 	}
 }
