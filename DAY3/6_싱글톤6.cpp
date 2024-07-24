@@ -53,3 +53,8 @@ int main()
 
 
 
+// github.com/aosp-mirror  <== "안드로이드 오픈소스"
+
+// system platform core 레포지토리 선택
+
+// libutils/include/utils 에서   singleton.h 열어 보세요
