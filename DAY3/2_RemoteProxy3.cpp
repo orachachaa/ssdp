@@ -19,6 +19,16 @@ public:
 	int Add(int a, int b) { return ec_send_server(server, 1, a, b); };
 	int Sub(int a, int b) { return ec_send_server(server, 2, a, b); };
 };
+// Proxy 를 Client 제작자가 직접 객체 생성하려면 클래스 이름이 필요 합니다.
+// => 강한결합이 됩니다.
+
+// 서버 제작자가 Proxy 를 생성하는 함수를 제공합니다
+ICalc* create()
+{
+	return new Calc;
+}
+
+
 
 // Proxy 를 만드는 사람   : Server 제작자
 // Proxy 를 사용하는 사람 : Client 제작자
@@ -33,7 +43,8 @@ int main()
 
 	// 약한결합으로 사용해야 합니다.
 
-	ICalc* calc = new ? ; // ? 를 어떻게 해야 할까요 ?
+//	ICalc* calc = new ? ; // ? 를 어떻게 해야 할까요 ?
+	ICalc* calc = create();
 
 
 	int n1 = calc->Add(1, 2);
