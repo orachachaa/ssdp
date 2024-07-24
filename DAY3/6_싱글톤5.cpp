@@ -29,15 +29,21 @@ public:
 
 	static Cursor& get_instance()
 	{
-		lock_guard<std::mutex> g(mtx);
+		{
+			std::lock_guard<std::mutex> g(mtx);
 
-		//mtx.lock();
+//			lock_guard<std::mutex> g(mtx);  // 1. g 의 생성자에서 mtx.lock()
+											// 2. g 가 파괴될때 소멸자에서 mtx.unlock()
+											// => 예외가 발생해도 지역변수는
+											//    안전하게 파괴, 소멸자 호출됨
+											//	  "stack unwinding" 개념
+			//mtx.lock();
 
-		if (sinstance == nullptr)
-			sinstance = new Cursor;
+			if (sinstance == nullptr)
+				sinstance = new Cursor;
 
-		//mtx.unlock();
-
+			//mtx.unlock();
+		}
 		return *sinstance;
 	}
 
