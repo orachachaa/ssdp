@@ -29,13 +29,27 @@ public:
 	}
 	void play() { implementor->play(); }
 	void stop() { implementor->stop(); }
+
+	void play_one_minute()
+	{
+		implementor->play();
+
+		// 1분 타이머 설치하고.. 타이머신호에서
+		implementor->stop();
+	}
+
 };
 
+// 이제 모든 코드에서는 
+// 실제 구현층(IMP3 인터페이스와, 실제 제품들)을 사용하지 말고
+// 중간층(추상층)을 사용하도록 합니다.
 
+// 구현과 추상을 분리해서 상호 독립적인 update 가 되게 한다.
+// => 핵심 : People<->IMP3  를 People<->MP3<->IMP3 로 하면 유연성이 증대 된다는 것
 class People
 {
 public:
-	void use(IMP3* p) 
+	void use(MP3* p) 
 	{
 		p->play();
 		p->stop();
