@@ -24,20 +24,23 @@ public:
 		std::cout << dllname << std::endl;
 
 		void* addr = ec_load_module(dllname);
-
 		using F = IGraph* (*)();
-
 		F f = (F)ec_get_function_address(addr, "create");
-
 		IGraph* g = f();
 
-		attach(g);
+
+//		attach(g);	// error. static 멤버 함수에서 non-static 멤버 함수 호출안됨
+					// this->attach(g); 인데 this 없음
+
+
+		// load_module 의 2번째 인자로 전달된 void* 인자를 캐스팅해서 사용
+		Subject* self = static_cast<Subject*>(param);
+
+		self->attach(g);
 
 		return 1;	// 1 : 계속 찾아달라
 					// 0 : 그만 찾아라
 	}
-
-
 
 
 	void attach(IGraph* p) { v.push_back(p); }
