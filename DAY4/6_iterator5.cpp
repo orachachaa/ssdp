@@ -83,6 +83,11 @@ int main()
 		std::cout << *first << std::endl; // 40
 		++first;
 	}
-
 }
+/*
+// QT : C++ 이지만 사용자를 늘리고 싶었습니다.
+QVector<int> v(10, 0);
 
+auto first = v.begin(); // STL style 반복자 달라는것
+auto it = v.iterator(); // java style 반복자 달라는 것
+*/
