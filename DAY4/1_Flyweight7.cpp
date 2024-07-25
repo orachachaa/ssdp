@@ -33,3 +33,20 @@ int main()
 	f2("hello");
 	f3("hello");
 }
+
+/*
+int main()
+{
+	char sa[] = "aaa";		// mov 스택위치, "aaa" 기계어
+							// => aaa 라는 데이타 코드메모리
+			
+	const char* p = "bbb";	// "bbb" .rdata 에 넣고
+							// mov p, rdata가 메모리에 올라올때 주소, 
+
+	printf("ccc");			// "ccc" .rdata 넣고
+							// printf(ccc 의 메모리(상수) 주소)
+
+	string s = "ddd"; // s.buffer = new char[5];
+					  // strcpy(s.buffer, "ddd"가 있는 주소)
+}
+*/
