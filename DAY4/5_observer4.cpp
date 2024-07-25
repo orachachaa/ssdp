@@ -17,10 +17,11 @@ public:
 		ec_enum_files("C:\\GRAPH", "*.dll", load_module, this);
 	}
 
-	bool load_module(const std::string& dllname, void* param)
+	static int load_module(std::string dllname, void* param)
 	{
+		std::cout << dllname << std::endl;
 
-		return true;
+		return 1;
 	}
 
 
