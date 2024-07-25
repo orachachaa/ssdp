@@ -69,7 +69,9 @@ int main()
 }
 
 
-
+// Undo 를 구현하는 방법
+// command : 동작의 취소를 사용한 Undo
+// memento : 객체의 상태 저장을 사용한 Undo - 메모리 사용량 증가할수 있음
 
 
 
