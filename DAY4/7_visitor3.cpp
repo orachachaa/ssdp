@@ -179,14 +179,17 @@ int main()
 	//			PopupMenu 라면 title 변경!
 
 	// 방법 #2. visitor 패턴 사용
-	TitleChangeVisitor v(" >", "");
+	TitleChangeVisitor v(" >", " *");
 	root->accept(&v);
 
 
 	root->command();
-
 }
 
+// 방문자 패턴에 대한 비판 
+// => 멤버 함수가 아닌 곳에서 객체의 상태를 조작하게 된다.
+// => set_title() 이 없었다면 title 변경할수 없게 된다.
+// => 캡슐화를 위배 한다는 비판이 있음.
 
 
 
