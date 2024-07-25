@@ -31,3 +31,21 @@ int main()
 	void(*f)(int, int) = &Point::foo;	// ok. 인자 2개 맞음.
 										// static 멤버 함수는 this 추가 안됨
 }
+
+/*
+p.set(10, 20); // set(&p, 10, 20)
+				// std::invoke(&Point::set, p, 10, 20)
+
+class Point
+{
+	void set(int a, int b) {}
+
+	void set(Point* this, int a, int b) {} // error
+
+	void set(this Point* self, int a, int b) // ok. C++23 부터!
+	{								// explicit object parameter 문법
+									// 별명 : "deducing this"
+		self.x = a;
+	}
+};
+*/
