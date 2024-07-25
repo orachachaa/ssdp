@@ -87,5 +87,18 @@ int main()
 		std::cout << it->next() << std::endl;
 	}
 
+	delete it;
 }
+// 위코드가 "java, C#,  Python, Swift..." 등의 대부분의 객체지향언어의
+// 반복자 스타일입니다.
+// 
+// C++ 진영에서 생각하는 위코드의 단점
+// 1. s.iterator() 가 반환하는 반복자는 new 로 만들었다
+// => 사용자가 delete 해야 한다.
 
+// 2. it.next(), it.hasNext() 가 가상함수이다.
+// => 루프안에서 수백~ 호출되면 성능이 좋지 않다.
+
+// 3. raw array 를 순회 할때는 "raw pointer" 를 사용해서
+//    ++ 로 이동한다.
+// => "모든 컬렉션에 동일한 방법" 이 아니다!
