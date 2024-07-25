@@ -85,6 +85,11 @@ int main()
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
 
+	// 공장에는 제품(도형)을 등록후에 사용해야 합니다.
+	factory.register_shape(1, &Rect::create);
+	factory.register_shape(2, &Circle::create);
+
+
 	while (1)
 	{
 		int cmd;
