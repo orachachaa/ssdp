@@ -14,6 +14,8 @@ public:
 	{
 		// #1. 약속된 폴더에 있는 모든 DLL 을 찾아야 합니다.
 		// => "ec_enum_files" 의 3번째 인자는 반드시 인자가 2개인 함수이어야 합니다.
+		// => 결국, callback 함수는 "static" 이어야 합니다.
+
 		ec_enum_files("C:\\GRAPH", "*.dll", load_module, this);
 	}
 
@@ -21,8 +23,20 @@ public:
 	{
 		std::cout << dllname << std::endl;
 
-		return 1;
+		void* addr = ec_load_module(dllname);
+
+		using F = IGraph* (*)();
+
+		F f = (F)ec_get_function_address(addr, "create");
+
+		IGraph* g = f();
+
+		attach(g);
+
+		return 1;	// 1 : 계속 찾아달라
+					// 0 : 그만 찾아라
 	}
+
 
 
 
