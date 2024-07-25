@@ -34,39 +34,43 @@ struct OSXEdit : public IEdit
 //--------------------------------------
 // Style 옵션과 상관없이 항상 Windows 모양의 Dialog
 
-class DialogBase
+// 각 OS 별로 컨트롤의 클래스 이름만 관리하는 구조체
+struct OSX
+{
+	using Button = OSXButton;
+	using Edit = OSXEdit;
+};
+
+struct Windows
+{
+	using Button = WinButton;
+	using Edit = WinEdit;
+
+	// 여기에 모든 컨트롤의 클래스 이름에 대한 별명포함
+};
+
+
+
+template< typename Style >
+class Dialog
 {
 public:
 	void init()
 	{
-		IButton* btn = CreateButton();
-		IEdit* edit = CreateEdit();
+		IButton* btn = new typename Style::Button;
+		IEdit* edit = new typename  Style::Edit;
 
 		// btn->Move(); edit->Move();
 
 		btn->Draw();
 		edit->Draw();
 	}
-
-	virtual IButton* CreateButton() = 0;
-	virtual IEdit* CreateEdit() = 0;
 };
 
-class WinDialog : public DialogBase
-{
-public:
-	IButton* CreateButton() override { return new WinButton; }
-	IEdit* CreateEdit() override { return new WinEdit; }
-};
-class OSXDialog : public DialogBase
-{
-public:
-	IButton* CreateButton() override { return new OSXButton; }
-	IEdit* CreateEdit() override { return new OSXEdit; }
-};
 int main(int argc, char** argv)
 {
-
+	// 템플릿 인자로 각 컨트롤의 이름을 가진 구조체 전달.
+	Dialog<OSX> dlg;
 }
 
 
