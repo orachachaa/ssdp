@@ -51,7 +51,8 @@ public:
 };
 
 // 전역변수의 생성자가 언제 호출되는지 생각해보세요
-AutoRegister ar(1, &Rect::create);
+// => main 함수보다 먼저 호출
+//AutoRegister ar(1, &Rect::create);
 
 
 
@@ -65,7 +66,34 @@ public:
 	void draw() override { std::cout << "draw Rect" << std::endl; }
 
 	static Shape* create() { return new Rect; }
+
+	// static 멤버 데이타의 특징을 생각해보세요
+	// => 모든 객체 공유
+	// => Rect 객체를 한개도 만들지 않아도, 프로그램 시작시에 메모리에 생성
+	// => 즉, ar 생성자는 main 함수 이전에 호출됨.
+	inline static AutoRegister ar{ 1, &Rect::create }; 
+							// () 아닌 {}로 해야 합니다. 
 };
+// Rect::ar 의 생성자가 먼저 한번 호출
+//					 => 결국, 객체 초기화가 아닌
+//					    모든 객체에 공통으로 사용할 초기화
+//						"클래스 생성자" 개념
+//Rect* r1 = new Rect; // 생성자 호출
+//Rect* r2 = new Rect; // 생성자 호출
+//Rect* r3 = new Rect; // 생성자 호출, 즉, 생성자는 객체당 한번씩 호출
+
+// C#
+class Car
+{
+	public Car() {} // instance 생성자
+	static Car() {} // static 생성자
+};
+
+Car c1 = new Car(); // static 생성자 호출
+					// instance 생성자 호출
+Car c2 = new Car(); // instance 생성자 호출
+
+
 
 
 
