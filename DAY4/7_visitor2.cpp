@@ -29,6 +29,22 @@ public:
 	}
 };
 
+// #3. 모든 컨테이너는 accept 가 있어야 한다.
+template<typename T> 
+struct IAcceptor
+{
+	virtual void accept(IVisitor<T>* visitor) = 0;
+	virtual ~IAcceptor() {}
+};
+
+// #4. STL 은 방문자 패턴을 사용하지 않습니다.
+//     std::list 를 확장해서 방문자 패턴을 추가해 봅시다.
+template<typename T> 
+class MyList : public std::list<T>, public IAcceptor<T>
+{
+public:
+};
+
 
 
 int main()
