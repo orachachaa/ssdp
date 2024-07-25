@@ -25,22 +25,51 @@ struct ICollection
 	virtual ~ICollection() {}
 };
 
+//----------------------
+// #3. slist 의 iterator 만들기
+// => 핵심 : 1번째 요소를 가리키는 포인터를 가지고 있다가
+//          약속된 방식대로만 이동, 요소접근  할수 있으면 됩니다.
+template<typename T> 
+class slist_iterator : public IIterator<T>
+{
+	Node<T>* current;
+public:
+	slist_iterator(Node<T>* p = nullptr)
+		: current(p) {}
+
+
+	// 규칙대로 이동하면 됩니다.
+	T next() override
+	{
+		T tmp = current->data;
+
+		current = current->next;
+
+		return tmp;
+	}
+
+	bool hasNext() override
+	{
+		return current == nullptr;
+	}
+};
+//----------------------------------------
 
 
 
 
-
-
-
-
-
-
-
-template<typename T> struct slist
+// #4. 모든 컨테이너는 약속된 방식대로 반복자를 꺼낼수 있어야 합니다.
+template<typename T> 
+struct slist : public ICollection<T>
 {
 	Node<T>* head = 0;
 public:
 	void push_front(const T& a) { head = new Node<T>(a, head); }
+
+	IIterator<T>* iterator() override 
+	{
+		return new slist_iterator<T>(head);
+	}
 };
 
 int main()
@@ -50,4 +79,12 @@ int main()
 	s.push_front(20);
 	s.push_front(30);
 	s.push_front(40);
+
+	auto it = s.iterator();
+
+	while (it->hasNext())
+	{
+		std::cout << it->next() << std::endl;
+	}
+
 }
