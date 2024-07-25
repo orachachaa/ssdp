@@ -128,7 +128,7 @@ public:
 // 이제 위코드는
 // "방문자 패턴의 기본 로직" 을 모두 구현해 놓았습니다.
 // => 방문자가 이동할수 있는 방법을 제공
-// => 이제 다양한 일을 하는 방문자를 만드세요
+// => 이제 다양한 일(요소 한개에 대한 연산)을 하는 방문자를 만드세요
 
 class TitleChangeVisitor : public IVisitor
 {
@@ -138,7 +138,12 @@ public:
 	TitleChangeVisitor(const std::string& s1, const std::string& s2)
 		: popup_tag(s1), item_tag(s2) {}
 
-	void visit(MenuItem* m) override  {}
+	void visit(MenuItem* m) override  
+	{
+		auto s = m->get_title() + item_tag;
+		m->set_title(s);
+	}
+
 	void visit(PopupMenu* m) override 
 	{
 		auto s = m->get_title() + popup_tag;
