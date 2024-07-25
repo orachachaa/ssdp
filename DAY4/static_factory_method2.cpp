@@ -11,8 +11,10 @@ public:
 	template<typename T>
 	static T* create()
 	{
-		T* p = new T;
-		p->init();
+		T* p = new T;	// 먼저 생성하고
+		p->init();		// 가상함수 호출 하므로
+						// 가상함수는 제대로 동작!!
+						// => 생성자에서 호출한것이 아님.
 		return p;
 	}
 
