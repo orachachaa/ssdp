@@ -40,6 +40,24 @@ public:
 	}
 };
 
+// 공장에 도형을 자동으로 등록하기 위한 클래스
+class AutoRegister
+{
+public:
+	AutoRegiter(int key, Shape* (*c)())
+	{
+		ShapeFactory::get_instance().register_shape(key, c);
+	}
+};
+
+// 전역변수의 생성자가 언제 호출되는지 생각해보세요
+AutoRegister ar(1, &Rect::create);
+
+
+
+
+
+
 
 class Rect : public Shape
 {
