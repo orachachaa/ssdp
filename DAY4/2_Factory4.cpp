@@ -120,3 +120,7 @@ int main()
 
 
 
+
+// Rust 언어의 객체 생성 방법
+// let r = Point::new(); // let 은 auto
+						 // new 가 static 멤버 함수
