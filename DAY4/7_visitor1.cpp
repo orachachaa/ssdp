@@ -24,10 +24,18 @@ int main()
 	TwiceVisitor<int> tv; // 요소를 2배로 하는 방문자 객체
 	s.accept( &tv );	  // s의 모든 요소 방문
 
+
 	ShowVisitor<int> sv;  // 요소 한개를 출력하는 방문자
 	s.accept( &sv );	  // s의 모든 요소 방문(출력)
 
+	// 규칙 #1. accept() 함수는 다양한 방문자 객체를 받아야 한다
+	// => 모든 방문자는 공통의 기반 클래스 필요
+	// => accept(IVisitor* )
 
+	// 규칙 #2. 방문자 패턴을 사용하기로 했다면
+	//	        list 뿐아니라 vector, set 에도 accept 가 있어야 한다.
+	// => 모든 복합객체는 accept 가 있어야 한다.
+	// => 복합 객체의 인터페이스가 필요
 }
 
 
