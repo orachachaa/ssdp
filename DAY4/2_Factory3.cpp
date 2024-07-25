@@ -44,7 +44,7 @@ public:
 class AutoRegister
 {
 public:
-	AutoRegiter(int key, Shape* (*c)())
+	AutoRegister(int key, Shape* (*c)())
 	{
 		ShapeFactory::get_instance().register_shape(key, c);
 	}
