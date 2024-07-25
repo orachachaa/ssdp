@@ -50,7 +50,7 @@ public:
 class BarGraph : public IGraph
 {
 public:
-	void update(int n, Subject* sender) override
+	void update(int hint, Subject* sender) override
 	{
 		// Table이 변했다고 통보가 왔으므로
 		// Table에 접근해서 멤버 함수를 통해서 데이타를 얻어 온다.
@@ -63,7 +63,7 @@ public:
 
 		std::cout << "Bar Graph : ";
 
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < hint; i++)
 			std::cout << "*";
 
 		std::cout << std::endl;
@@ -73,11 +73,11 @@ public:
 class PieGraph : public IGraph
 {
 public:
-	void update(int n, Subject* sender) override
+	void update(int hint, Subject* sender) override
 	{
 		std::cout << "Pie Graph : ";
 
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < hint; i++)
 			std::cout << ")";
 
 		std::cout << std::endl;
