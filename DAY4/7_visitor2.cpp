@@ -14,7 +14,19 @@ struct IVisitor
 template<typename T> class TwiceVisitor : public IVisitor<T>
 {
 public:
+	void visit(T& e) override
+	{
+		e *= 2;
+	}
+};
 
+template<typename T> class ShowVisitor : public IVisitor<T>
+{
+public:
+	void visit(T& e) override
+	{
+		std::cout << e << std::endl;
+	}
 };
 
 
