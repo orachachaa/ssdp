@@ -8,6 +8,8 @@ class Shape
 public:
 	virtual void draw() = 0;
 	virtual ~Shape() {}
+
+	virtual Shape* clone() = 0;
 };
 
 class Rect : public Shape
@@ -15,44 +17,41 @@ class Rect : public Shape
 public:
 	void draw() override { std::cout << "draw Rect" << std::endl; }
 
-	static Shape* create() { return new Rect; }
+	static Shape* create()  { return new Rect; }
+	Shape* clone() override { return new Rect(*this); }
 };
-
-
 
 class Circle : public Shape
 {
 public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
-
 	static Shape* create() { return new Circle; }
-};
 
+	Shape* clone() override { return new Circle(*this); }
+};
 
 
 class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
 
-		using CREATOR = Shape * (*)();
-
-	std::map<int, CREATOR> create_map; 
+	std::map<int, Shape*> prototype_map; 
 
 public:
-	void register_shape(int key, CREATOR c)
+	void register_sample(int key, Shape* s)
 	{
-		create_map[key] = c;
+		prototype_map[key] = s;
 	}
 
 	Shape* create(int key)
 	{
 		Shape* p = nullptr;
 
-		auto it = create_map.find(key);
+		auto it = prototype_map.find(key);
 
-		if (it != create_map.end())
+		if (it != prototype_map.end())
 		{
-			p = it->second(); 
+			p = it->second->clone();
 		}
 
 		return p;
@@ -77,6 +76,7 @@ int main()
 
 	// 이번에는 "생성함수" 가 아닌
 	// => 자주 사용되는 견본객체를 공장에 등록해 봅시다.
+	// => 각 객체를 만들때 생성자 인자 등이 복잡하다고 생각해 보세요
 	Rect* redRect = new Rect;	
 	Rect* blueRect = new Rect;
 	Circle* redCircle = new  Circle;
@@ -113,5 +113,7 @@ int main()
 }
 
 
-
+// Prototype 패턴
+// => 자주 사용되는 객체의 견본을 미리 생성해서 보관하고 있다가
+//    복사를 통해서 새로운 객체를 생성하는 기법
 
