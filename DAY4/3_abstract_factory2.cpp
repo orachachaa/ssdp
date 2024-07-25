@@ -33,15 +33,23 @@ struct OSXEdit : public IEdit
 };
 //-----------------
 
+class IFactory
+{
+public:
+	virtual IButton* CreateButton() = 0;
+	virtual IEdit* CreateEdit() = 0;
+	virtual ~IFactory() {}
+};
+
 //  style 별로 각 콘트롤을 만드는 공장
-class WinFactory 
+class WinFactory : public IFactory
 {
 public:
 	IButton* CreateButton() { return new WinButton; }
 	IEdit*   CreateEdit()   { return new WinEdit; }
 	virtual ~WinFactory() {}
 };
-class OSXFactory 
+class OSXFactory : public IFactory
 {
 public:
 	IButton* CreateButton() { return new OSXButton; }
@@ -52,13 +60,13 @@ public:
 
 int main(int argc, char** argv)
 {
-	? factory;
-	if (strcmp(argv[0], "-style:OSX") == 0)
+	IFactory* factory;
+	if (strcmp(argv[1], "-style:OSX") == 0)
 		factory = new OSXFactory;
 	else
 		factory = new WinFactory;
 
-	// 컨트롤이 필요하면 공장을 사용해서 생성
+	// 컨트롤이 필요하면 공장을 사용해서 생성  
 	IButton* btn = factory->CreateButton();
 	btn->Draw();
 }

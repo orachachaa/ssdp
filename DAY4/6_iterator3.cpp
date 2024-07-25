@@ -8,7 +8,7 @@ int main()
 	vector<int> v = { 1,2,3 };
 
 	auto it1 = s.iterator();
-	auto it2 = s.iterator();
+	auto it2 = v.iterator();
 
 	while (it1.hasNext())
 	{

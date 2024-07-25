@@ -34,28 +34,26 @@ struct OSXEdit : public IEdit
 //--------------------------------------
 // Style 옵션과 상관없이 항상 Windows 모양의 Dialog
 
-class WinDialog
+struct OSX
 {
-public:
-	void init()
-	{
-		WinButton* btn  = new WinButton;
-		WinEdit*   edit = new WinEdit;
-
-		// btn->Move(); edit->Move();
-
-		btn->Draw();
-		edit->Draw();
-	}
+	using Button = OSXButton;
+	using Edit = OSXEdit;
 };
 
-class OSXDialog
+struct Windows
+{
+	using Button = WinButton;
+	using Edit = WinEdit;
+};
+
+template<typename Style>
+class Dialog
 {
 public:
 	void init()
 	{
-		OSXButton* btn = new OSXButton;
-		OSXEdit* edit = new OSXEdit;
+		IButton* btn = new typename Style::Button;
+		IEdit* edit = new typename Style::Edit;
 
 		// btn->Move(); edit->Move();
 
@@ -66,7 +64,8 @@ public:
 
 int main(int argc, char** argv)
 {
-
+	Dialog<OSX> dlg;
+	dlg.init();
 }
 
 

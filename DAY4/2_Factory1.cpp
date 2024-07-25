@@ -26,7 +26,7 @@ class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
 public:
-	Shape* Create(int type)
+	Shape* create(int type)
 	{
 		Shape* p = nullptr;
 		if      (type == 1)	p = new Rect;
@@ -40,13 +40,20 @@ int main()
 {
 	std::vector<Shape*> v;
 
+	ShapeFactory& factory = ShapeFactory::get_instance();
+
 	while (1)
 	{
 		int cmd;
 		std::cin >> cmd;
 
-		if (cmd == 1) v.push_back(new Rect);
-		else if (cmd == 2) v.push_back(new Circle);
+		if (cmd > 0 && cmd < 8)
+		{
+			Shape* s = factory.create(cmd);
+
+			if (s != nullptr)
+				v.push_back(s);
+		}
 		else if (cmd == 9)
 		{
 			for (int i = 0; i < v.size(); i++)

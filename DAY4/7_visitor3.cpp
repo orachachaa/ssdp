@@ -3,8 +3,23 @@
 #include <vector>
 #include <conio.h> 
 
+class MenuItem;
+class PopupMenu;
 
-class BaseMenu
+struct IVisitor
+{
+	virtual void visit(MenuItem* e) = 0;
+	virtual void visit(PopupMenu* e) = 0;
+	virtual ~IVisitor() {}
+};
+
+struct IAcceptor
+{
+	virtual void accept(IVisitor* visit) = 0;
+	virtual ~IAcceptor() {}
+};
+
+class BaseMenu : public IAcceptor
 {
 	std::string title;
 public:
@@ -12,15 +27,19 @@ public:
 	virtual ~BaseMenu() {}
 
 	std::string get_title() const { return title; }
-
+	void set_title(const std::string& s) { title = s; }
 	virtual void command() = 0;
 };
-
 
 class MenuItem : public BaseMenu
 {
 	int id;
 public:
+	void accept(IVisitor* visitor)
+	{
+		visitor->visit(this);
+	}
+
 	MenuItem(const std::string& title, int id) : BaseMenu(title), id(id) {}
 
 	void command() override
@@ -34,6 +53,15 @@ class PopupMenu : public BaseMenu
 {
 	std::vector<BaseMenu*> v;
 public:
+	void accept(IVisitor* visitor)
+	{
+		visitor->visit(this);
+
+		for (auto m : v)
+			//visitor->visit(m); // X
+			m->accept(visitor);
+	}
+
 	PopupMenu(const std::string& title) : BaseMenu(title) {}
 
 	void add_menu(BaseMenu* p) { v.push_back(p); }
@@ -70,10 +98,25 @@ public:
 
 };
 
+class TitleChangeVisitor : public IVisitor
+{
+	std::string item_tag;
+	std::string popup_tag;
+public:
+	TitleChangeVisitor(const std::string& s1, const std::string& s2)
+		: popup_tag(s1), item_tag(s2) {}
 
-
-
-
+	void visit(MenuItem* m) override
+	{
+		auto s = m->get_title() + item_tag;
+		m->set_title(s);
+	}
+	void visit(PopupMenu* m) override
+	{
+		auto s = m->get_title() + popup_tag;
+		m->set_title(s);
+	}
+};
 
 int main()
 {
@@ -93,9 +136,10 @@ int main()
 	pm2->add_menu(new MenuItem("GREEN", 22));
 	pm2->add_menu(new MenuItem("BLUE", 23));
 
+	TitleChangeVisitor v(" >", " #");
+	root->accept(&v);
 
 	root->command();
-
 }
 
 

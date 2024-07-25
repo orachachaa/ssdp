@@ -2,12 +2,14 @@
 #include <iostream>
 #include <vector>
 
+// 관찰자 (Observer, 그래프)의 인터페이스
 struct IGraph
 {
 	virtual void update(int data) = 0;
 	virtual ~IGraph() {}
 };
 
+// 관찰의 대상
 class Table
 {
 	std::vector<IGraph*> v;
@@ -46,10 +48,25 @@ public:
 	}
 };
 
+class PieGraph : public IGraph
+{
+public:
+	void update(int n) override
+	{
+		std::cout << "Pie Graph : ";
+
+		for (int i = 0; i < n; i++)
+			std::cout << ")";
+
+		std::cout << std::endl;
+	}
+};
+
 int main()
 {
 	Table t;
 	PieGraph pg; t.attach(&pg);
+	BarGraph bg; t.attach(&bg);
 	t.edit();
 }
 

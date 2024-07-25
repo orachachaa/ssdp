@@ -34,8 +34,8 @@ struct OSXEdit : public IEdit
 
 int main(int argc, char** argv)
 {
-	? btn;
-	if (strcmp(argv[0], "-style:OSX") == 0)
+	IButton* btn;
+	if (strcmp(argv[1], "-style:OSX") == 0)
 		btn = new OSXButton;
 	else
 		btn = new WinButton;

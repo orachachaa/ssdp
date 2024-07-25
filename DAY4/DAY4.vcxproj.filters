@@ -96,12 +96,39 @@
     <ClCompile Include="1_Flyweight4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="1_Flyweight6.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1_Flyweight5.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1_Flyweight7.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticFactoryMethod.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticFactoryMethod2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="4_factory_method3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleGraph.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="thiscall.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cppmaster.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="helper.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IGraph.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
