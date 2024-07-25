@@ -50,7 +50,7 @@ public:
 
 	bool hasNext() override
 	{
-		return current == nullptr;
+		return current != nullptr;
 	}
 };
 //----------------------------------------
