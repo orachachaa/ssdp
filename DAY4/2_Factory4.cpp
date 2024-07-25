@@ -50,6 +50,10 @@ public:
 };
 
 
+// 도형 클래스가 지켜야하는 규칙을 매크로로 제공합니다
+#define REGISTER_SHAPE(key, classname)							\
+	static Shape* create() { return new classname; }			\
+	inline static AutoRegister ar{ key, &classname::create };
 
 
 
@@ -58,9 +62,7 @@ class Rect : public Shape
 public:
 	void draw() override { std::cout << "draw Rect" << std::endl; }
 
-	static Shape* create() { return new Rect; }
-
-	inline static AutoRegister ar{ 1, &Rect::create };
+	REGISTER_SHAPE(1, Rect)
 };
 
 
@@ -71,9 +73,15 @@ class Circle : public Shape
 public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
 
-	static Shape* create() { return new Circle; }
+	REGISTER_SHAPE(2, Circle)
+};
 
-	inline static AutoRegister ar{ 2, &Circle::create };
+class Triangle : public Shape
+{
+public:
+	void draw() override { std::cout << "draw Triangle" << std::endl; }
+
+	REGISTER_SHAPE(3, Triangle)
 };
 
 
