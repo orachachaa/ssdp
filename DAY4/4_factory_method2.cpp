@@ -66,15 +66,21 @@ public:
 	IButton* CreateButton() override { return new OSXButton; }
 	IEdit* CreateEdit() override { return new OSXEdit; }
 };
-
 int main(int argc, char** argv)
 {
 
 }
 
+// factory method : 가상함수로 객체 생성
+//					=> GOF's 디자인패턴 23개에 포함
+
+// static factory method : static 멤버 함수로 객체 생성
+//					=> 많이 사용되지만 23개 패턴에는 포함 안됨
 
 
-
+// abstract factory
+// => factory method 의 집합!!
+// => factory method 만 있는 것
 
 
 
