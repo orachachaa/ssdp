@@ -65,6 +65,7 @@ public:
 	void push_front(const T& a) { head = new Node<T>(a, head); }
 
 	slist_iterator<T> begin() {	return slist_iterator<T>(head);	}
+	slist_iterator<T> end() { return slist_iterator<T>(nullptr); }
 };
 int main()
 {
