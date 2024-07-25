@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
+#include <map>
 #include "Helper.h"
 
 class Shape
@@ -40,6 +41,8 @@ class Circle : public Shape
 {
 public:
 	void draw() override { std::cout << "draw Circle" << std::endl; }
+
+	static Shape* create() { return new Circle; }
 };
 
 
@@ -47,15 +50,33 @@ public:
 class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
+
+	using CREATOR = Shape* (*)();
+
+	std::map<int, CREATOR> create_map; // [도형번호, 생성함수] 를 보관
+
 public:
-	Shape* create(int type)
+	void register_shape(int key, CREATOR c)
+	{
+		create_map[key] = c;
+	}
+
+	Shape* create(int key)
 	{
 		Shape* p = nullptr;
-		if (type == 1)	p = new Rect;
-		else if (type == 2)	p = new Circle;
+
+		auto it = create_map.find(key);
+
+		if (it != create_map.end())
+		{
+			p = it->second(); // second 가 value, 즉, 생성함수
+		}
+
 		return p;
 	}
 };
+
+
 
 
 int main()
