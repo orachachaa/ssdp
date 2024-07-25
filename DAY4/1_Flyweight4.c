@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdio.h>
 
 int main()
 {
@@ -12,8 +12,9 @@ int main()
 	char sa[] = "abcd";
 	char* sp = "abcd";
 
+
 	*sa = 'X'; // ok
-	*sp = 'X'; // runtime error
+//	*sp = 'X'; // runtime error
 
 	printf("main finish\n");
 }
