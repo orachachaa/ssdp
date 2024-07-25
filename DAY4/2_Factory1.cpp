@@ -22,6 +22,10 @@ public:
 
 // 도형을 만드는 팩토리
 
+// 도형의 생성은 공장을 통해서만 할수 있도록 하면
+// => 새로운 도형이 추가되었을때, 공장만 수정하면 됩니다.
+// => 코드 수정을 최소화 할수 있습니다.
+
 class ShapeFactory
 {
 	MAKE_SINGLETON(ShapeFactory)
