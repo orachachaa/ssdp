@@ -43,17 +43,22 @@ template<typename T>
 class MyList : public std::list<T>, public IAcceptor<T>
 {
 public:
+
+	// 생성자 상속 문법 : 기반 클래스의 모든 생성자 모양을 
+	//					 파생클래스 객체 생성시에도 동일하게 사용할수 있도록해달라
+
+	using std::list<T>::list;  // using 클래스이름::생성자이름
+
+	void accept(IVisitor<T>* visitor) override
+	{
+		for (auto& e : *this)    // *this 의 의미를 생각해 보세요
+			visitor->visit(e);
+	}
 };
-
-
 
 int main()
 {
-	std::list<int> s = { 1,2,3,4,5,6,7,8,9,10 };
-
-
-	for (auto& e : s)
-		s *= 2;
+	MyList<int> s = { 1,2,3,4,5,6,7,8,9,10 };
 
 	TwiceVisitor<int> tv; 
 	s.accept(&tv);	  
