@@ -74,11 +74,14 @@ int main()
 	s.push_front(30);
 	s.push_front(40);
 
-	auto it = s.begin();
-	
-	std::cout << *it << std::endl; // 40
+	auto first = s.begin();
+	auto last = s.end();
 
-	++it;
-	std::cout << *it << std::endl; // 30
+	while (first != last)
+	{
+		std::cout << *first << std::endl; // 40
+		++first;
+	}
+
 }
 
