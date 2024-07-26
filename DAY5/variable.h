@@ -1,0 +1,2 @@
+// variable.h
+#pragma once
