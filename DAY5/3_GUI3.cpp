@@ -35,7 +35,7 @@ public:
 		{
 		case WM_LBUTTONDOWN: 
 //			on_lbutton_down();  // this->on_lbutton_down();
-			self->on_key_down();
+			self->on_lbutton_down();
 			break;
 
 		case WM_KEYDOWN:     
@@ -49,9 +49,20 @@ public:
 	virtual void on_key_down() {}
 };
 
+// 이제 라이브러리 사용자는 Window 파생 클래스를 만들어서
+// 약속된 가상함수를 override 하면 됩니다.
+class MainWindow : public Window
+{
+public:
+	void on_lbutton_down() override
+	{
+		std::cout << "MainWindow on_lbutton_down()\n";
+	}
+};
+
 int main()
 {
-	Window w;
+	MainWindow w;
 	w.create("A");	
 
 	ec_process_message();
