@@ -6,6 +6,7 @@
 int main()
 {
 	g = 10;
+	g2 = 10;
 }
 
 
@@ -17,4 +18,6 @@ int main()
 // #3. 전역변수 자체를 헤더에 정의(definition) 하면 
 //     중복정의에러가 발생합니다.
 
-// #4. 
+// #4. C++17 의 inline variable 을 사용하면
+//     전역변수를 헤더에 넣을수 있습니다.
+//     => mutiple definition 을 허용해 달라는 것
