@@ -81,3 +81,5 @@ int main()
 
 // 지원서디렉터 d;
 // d.set_builder(&A대학);
+// d.set_builder(&B대학);
+// d.지원서만들어줘()
