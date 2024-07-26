@@ -64,11 +64,20 @@ int main()
 
 	Director d;
 
-	d.set_builder(&k);
-//	d.set_builder(&a); // 축구게임에서 국가를 변경할때 마다
+//	d.set_builder(&k);
+	d.set_builder(&a); // 축구게임에서 국가를 변경할때 마다
 						// 해당하는 빌더로 교체 됩니다.
 
 	Character c = d.construct();
 	std::cout << c << std::endl;
 
 }
+
+// 대학 지원서는 "이름, 전화번호, 주소"를 적어야 합니다.
+// 그런데, 어느 위치에 적는지는 대학마다 다릅니다.
+
+// A대학 : (10, 10) 이름  (20,20) 전화
+// B대학 : (30, 20) 이름  (50,50) 전화
+
+// 지원서디렉터 d;
+// d.set_builder(&A대학);
