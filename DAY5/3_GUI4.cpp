@@ -23,6 +23,8 @@ public:
 
 		// C 함수로 실제 자식윈도우로 부착
 		ec_add_child(this->handle, child->handle);
+
+		ec_set_window_rect(child->handle, 30, 30, 200, 200);
 	}
 
 
