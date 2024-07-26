@@ -80,6 +80,8 @@ int main()
 	ImageView view;
 	view.create("view");
 
+	w.add_child(&view);
+
 	ec_process_message();
 }
 
