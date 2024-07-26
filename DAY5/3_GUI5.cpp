@@ -54,7 +54,8 @@ public:
 		{
 		case WM_LBUTTONDOWN:
 			//on_lbutton_down();
-			self->on_lbutton_down();
+			//self->on_lbutton_down();
+			self->Handle_lbutton_down();
 			break;
 		case WM_KEYDOWN:
 			//on_key_down();
@@ -64,35 +65,37 @@ public:
 		return 0;
 	}
 
-	virtual void on_lbutton_down() {}
+	void Handle_lbutton_down()
+	{
+		if (on_lbutton_down() == true)
+			return;
+
+		if (parent != 0)
+			parent->Handle_lbutton_down();
+	}
+
+	virtual bool on_lbutton_down() { return false; }
 	virtual void on_key_down() {}
 };
 
 class MainWindow : public Window
 {
 public:
-	void on_lbutton_down() override
+	bool on_lbutton_down() override
 	{
 		std::cout << "MainWindow on_lbutton_down()\n";
-	}
-
-	void on_key_down() override
-	{
-		std::cout << "MainWindow on_key_down()\n";
+		return true;
 	}
 };
 
 class ImageView : public Window
 {
 public:
-	void on_lbutton_down() override
+	bool on_lbutton_down() override
 	{
 		std::cout << "ImageView on_lbutton_down()\n";
-	}
-
-	void on_key_down() override
-	{
-		std::cout << "ImageView on_key_down()\n";
+//		return true;
+		return false;
 	}
 };
 

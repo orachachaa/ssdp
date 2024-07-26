@@ -17,6 +17,10 @@ class MyCheckBox : public CheckBox
 public:
 	void ChangeState() override
 	{
+		if (GetCheck() == true)
+			std::cout << "enable button\n";
+		else
+			std::cout << "disable button\n";
 	}
 };
 

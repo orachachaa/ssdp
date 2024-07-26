@@ -15,72 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1_memento1.cpp">
+    <ClCompile Include="2_main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="1_memento2.cpp">
+    <ClCompile Include="variable.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="2_chain_of_responsibility1.cpp">
+    <ClCompile Include="4_inline_static1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="3_GUI1.cpp">
+    <ClCompile Include="4_inline_static2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="3_GUI2.cpp">
+    <ClCompile Include="4_inline_static3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="3_GUI3.cpp">
+    <ClCompile Include="4_inline_static4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="3_GUI4.cpp">
+    <ClCompile Include="range1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="4_State1.cpp">
+    <ClCompile Include="range2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="4_State2.cpp">
+    <ClCompile Include="range3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="4_State3.cpp">
+    <ClCompile Include="range4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="5_Builder1.cpp">
+    <ClCompile Include="range5.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="5_Builder2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="6_Mediator1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="6_Mediator2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="6_Mediator3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="6_Mediator4.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="3_GUI5.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="3_GUI6.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="4_State4.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SOLID.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="정리.cpp">
+    <ClCompile Include="range6.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cppmaster.h">
+    <ClInclude Include="variable.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>

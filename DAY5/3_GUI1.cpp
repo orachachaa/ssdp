@@ -16,6 +16,8 @@ int main()
 	int h1 = ec_make_window(foo, "A"); 
 	int h2 = ec_make_window(foo, "B");
 
+	ec_add_child(h1, h2);
+
 	ec_process_message();
 }
 

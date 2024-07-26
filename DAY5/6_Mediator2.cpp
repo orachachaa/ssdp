@@ -3,6 +3,7 @@
 class CheckBox
 {
 	bool state;
+
 public:
 	CheckBox() : state(false) {}
 	
