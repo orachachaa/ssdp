@@ -1,2 +1,2 @@
 // 3_variable.cpp
-#include "varible.h"
+#include "variable.h"

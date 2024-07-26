@@ -1,7 +1,7 @@
 // 3_main.cpp, 3_variable.cpp, variable.h 만드세요
 
 // 3_main.cpp
-#include "varible.h"
+#include "variable.h"
 
 int main()
 {
