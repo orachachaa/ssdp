@@ -50,7 +50,6 @@ public:
 	void attack() { state->attack(); }
 };
 
-
 int main()
 {
 	Character* p = new Character;
@@ -60,10 +59,28 @@ int main()
 	p->set_item();
 	p->run();
 	p->attack();
-
-
 }
 
+// strategy 와 state 패턴은 동일한 클래스 Diagram 입니다.
 
 
 
+// strategy : 객체가 사용하는 한개의 알고리즘의 교체
+//			  주로 외부적 요인에 의해 교체 됩니다.
+//			  Edit edit;
+//			  edit.set_validator(&v1); // 외부에서 교체 하고
+//			  edit.set_validator(&v2); // 객체의 전체 동작이 아닌
+//										// 내부적으로 사용하는 알고리즘 교체
+//
+
+// state : 객체의 거의 모든 동작을 교체 하는 것
+//         내부적인 알고리즘이 아닌 사용자가 사용하는 모든 동작들..
+//         외부에서 교체가 아닌 "내부 상태" 에 따른 동작 교체
+
+// 자판기 
+// 멤버 함수 : insert_coin(), select_coffee()
+// 동전을 넣었을때의 동작에 대한 함수들
+// 동전을 넣지 않았을때의 동작에 대한 함수들
+
+// 결국, 객체의 상태에 따라서 
+// 달라지는 멤버 함수를 별도의 클래스로 설계 하는 것. 
