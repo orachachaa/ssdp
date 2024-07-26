@@ -1,0 +1,2 @@
+// foo.h
+void foo();
