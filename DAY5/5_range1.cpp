@@ -13,7 +13,7 @@ int main()
 
 	// 위 for 문의 원리
 	auto first = v.begin();
-	auto last = v.end();
+	auto last  = v.end();
 
 	for (; first != last; ++first)
 	{
