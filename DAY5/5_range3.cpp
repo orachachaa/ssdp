@@ -7,7 +7,7 @@ class take_view
 	T& r;
 	int cnt;
 public:
-	take_view(T& r, int cnt) : r(r), cnt(c) {}
+	take_view(T& r, int c) : r(r), cnt(c) {}
 
 	auto begin() { return r.begin(); }
 	auto end()   { return r.begin() + cnt; }
