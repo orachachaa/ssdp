@@ -1,3 +1,5 @@
+// SOLID.CPP - GIT DAY5에서 복사해오세요
+
 #include <iostream>
 
 // SOLID 
@@ -15,17 +17,22 @@
 
 class Car
 {
+	// 다양한 멤버 들.. 
 public:
 	virtual void Go() { std::cout << "Go\n"; }
 };
+
 class SuperCar : public Car
 {
 public:
 	void Go() override { std::cout << "fast Go\n"; }
 };
+
 class FlyingCar : public Car
 {
 public:
+	void Fly() {}
+	void Go() override { throw UnsupportedOperation(); }
 };
 
 void foo(Car* c) // 기반 클래스가 사용되는 곳
@@ -33,22 +40,40 @@ void foo(Car* c) // 기반 클래스가 사용되는 곳
 	c->Go();
 }
 
-foo(new SuperCar);
-foo(new FlyingCar);
+foo(new SuperCar);	// LSP 위반 아님.
+foo(new FlyingCar); // LSP 위반!!! 기반 클래스 기능이 제거 되었다
+					// 나쁜 코드!!
 
 //---------------------------------------------------
 // ISP ( Interface Segregation Principle )
-// => 인터페이스의 격리의 원칙
+// => 인터페이스의 격리(분리)의 원칙
 // => 각 클라이언트가 필요로 하는 인터페이스들을 분리함으로써, 
 //    클라이언트가 사용하지 않는 인터페이스에 변경이 발생하더라도 
 //    영향을 받지 않도록 만들어야 하는 것이 핵심이다.
 
+// 아래 코드는 나쁜 인터페이스
+/*
 struct IMP3
 {
 	virtual void play() = 0;
 	virtual void stop() = 0;
 	virtual void upload_sns() = 0;
 	virtual ~IMP3() {}
+};
+*/
+
+// 아래 코드가 좋은 인터페이스
+struct IMP3
+{
+	virtual void play() = 0;
+	virtual void stop() = 0;
+	virtual ~IMP3() {}
+};
+
+struct ISNS
+{
+	virtual void upload_sns() = 0;
+	virtual ~ISNS() {}
 };
 
 void only_listening_music(IMP3* mp3)
@@ -67,11 +92,10 @@ class People
 {
 public:
 	void use(HDCamera* c) { c->take(); }  // DIP 위반
-	void use(ICamera* c)  { c->take(); }  // DIP 준수
+	void use(ICamera* c) { c->take(); }  // DIP 준수
 
 	// People 은 카메라가 필요하지만, 
 	// 1. 구체적인 하위 모듈(HDCamera)에 의존하지 않고
 	// 2. 추상(ICamera) 에 의존하게 된다.
 };
-
 
