@@ -80,16 +80,16 @@ public:
 class ImageView : public Window
 {
 public:
+	
 	bool on_lbutton_down() override
 	{
 		std::cout << "ImageView on_lbutton_down()\n";
-		return true;
+
+//		return true; // event 처리를 종료해 달라
+		return false;// event 를 부모 윈도우에도 보내 달라
 	}
+	
 };
-
-
-
-
 
 
 int main()
@@ -105,3 +105,12 @@ int main()
 	ec_process_message();
 }
 
+// 대부분의 GUI 라이브러리는 
+// 자식윈도우 이벤트 => 부모 윈도우에도 전달하게 됩니다.
+
+// Chain Of Responsiblity  패턴의 응용인데
+// 대부분 자신들의 용어를 사용합니다
+// 
+// C# WPF : Bubbling Event
+// IOS cocoa touch : Responder Chain
+// MFC : Command Routing
