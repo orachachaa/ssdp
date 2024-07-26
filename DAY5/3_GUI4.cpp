@@ -1,6 +1,7 @@
 #define USING_GUI
 #include "cppmaster.h"
 #include <map>
+#include <vector>
 
 
 class Window
@@ -9,7 +10,23 @@ class Window
 
 	inline static map<int, Window*> this_map;	
 
+	Window* parent = nullptr; // 부모 윈도우는 한개 이다.
+
+	std::vector<Window*> child_vector; // 자식윈도우는 여러개
+
 public:
+
+	void add_child(Window* child)
+	{
+		child->parent = this;
+		child_vector.push_back(child);
+
+		// C 함수로 실제 자식윈도우로 부착
+		ec_add_child(this->handle, child->handle);
+	}
+
+
+
 	void create(const std::string& title)
 	{
 		handle = ec_make_window(msgproc, title);
